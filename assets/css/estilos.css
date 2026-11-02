@@ -149,6 +149,7 @@ body {
         /* padding-right: 4vw; */
     }
 
+    & > footer,
     & main > section > article {
         padding: 5vh;
         padding-left: var(--padding-body-xs);
@@ -168,6 +169,7 @@ body {
             }
         }
 
+        & > footer,
         & main > section > article {
             padding-left: var(--padding-body-m);
             padding-right: var(--padding-body-m);
@@ -187,6 +189,7 @@ body {
             }
         }
 
+        & > footer,
         & main > section > article {
             padding-left: var(--padding-body-l);
             padding-right: var(--padding-body-l);
@@ -243,10 +246,7 @@ body {
 */
 
 a:not(.no-border) {
-    background-image: linear-gradient(
-        var(--color-a--hover),
-        var(--color-a--hover)
-    );
+    background-image: linear-gradient(var(--color-a--hover), var(--color-a--hover));
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: 0 2px;

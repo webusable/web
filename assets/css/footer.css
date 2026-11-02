@@ -1,0 +1,102 @@
+:root {
+    --ratio-w3c-css: 88/31;
+    --ratio-w3c-wcag: 88/31;
+    --ratio-w3c-html5: 182/64;
+}
+
+body > footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background: #000;
+}
+
+body > footer section.contentinfo,
+body > footer section.footer__pie {
+    width: 100%;
+}
+
+body > footer section.footer__pie {
+    width: 100%;
+    margin-top: 2em;
+}
+
+/* Convertir li en elementos en línea */
+body > footer li.validator,
+body > footer li.legal {
+    display: inline-block;
+    font-size: small;
+}
+
+/* Poner el mismo márgen que los figures validadores */
+li.legal {
+    margin: 0.5em;
+}
+
+li.legal,
+li.legal a {
+    height: 4em;
+    line-height: 4em;
+}
+
+/* Textos en color blanco */
+body > footer h2,
+body > footer li a,
+body > footer li a span {
+    color: white;
+}
+
+/* No mostrar el h2 del footer del sitio */
+footer section.footer__pie h2 {
+    display: none;
+}
+
+section.contentinfo a.pattern figure {
+    width: 20vw;
+    height: 13.32vw;
+    background-image: url("../svg/logo.svg");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section.contentinfo a.pattern {
+    width: 40%;
+}
+div[role="group"] {
+    width: 40%;
+}
+
+/* Reducir tamaño iconos validadores */
+
+figure.w3c {
+    width: 5vw;
+    margin: 0;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+    background-attachment: scroll;
+    background-origin: border-box;
+    -webkit-filter: none;
+    filter: none;
+
+    &.css {
+        aspect-ratio: var(--ratio-w3c-css);
+        background-image: url("../svg/w3c/css.svg");
+    }
+
+    &.wcag {
+        aspect-ratio: var(--ratio-w3c-wcag);
+        background-image: url("../svg/w3c/wcag.svg");
+    }
+
+    &.xhtml5 {
+        aspect-ratio: var(--ratio-w3c-html5);
+        background-image: url("../svg/w3c/html5.svg");
+    }
+}

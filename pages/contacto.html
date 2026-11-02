@@ -88,6 +88,45 @@
                 </header>
                 <article>
                     <h3>Formulario de contacto</h3>
+                    <form action="enviado.html" method="post" class="form" id="form">
+                        <fieldset>
+                            <legend>Datos Personales</legend>
+                            <ul>
+                                <li>
+                                    <label for="name">Nombre</label>
+                                    <input type="text" name="name" id="name" placeholder="Tu nombre" required />
+                                </li>
+                                <li>
+                                    <label for="email">E-mail</label>
+                                    <input type="email" name="email" id="email" placeholder="Correo electrónico" required />
+                                </li>
+                                <li>
+                                    <label for="tfno">Teléfono</label>
+                                    <input type="tel" name="tfno" id="tfno" placeholder="Teléfono" />
+                                </li>
+                                <li>
+                                    <label for="edad">Edad</label>
+                                    <input type="number" name="edad" id="edad" placeholder="Tu edad" />
+                                </li>
+                                <li>
+                                    <input type="radio" name="coche" id="coche-si" value="Si" />
+                                    <label for="coche-si">Coche propio Si</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="coche" id="coche-no" value="No" />
+                                    <label for="coche-no">Coche propio No</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" name="acepto" id="acepto" required />
+                                    <label for="acepto">Acepto el tratamiento de mis datos personales</label>
+                                </li>
+                                <li>
+                                    <label for="mensaje">Tu mensaje</label>
+                                    <textarea name="menaje" id="mensaje" cols="30" rows="5" placeholder="Escribe tu mensaje aquí" required></textarea>
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </form>
                 </article>
             </section>
         </main>

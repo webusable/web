@@ -1,19 +1,95 @@
 :root {
-    /* Colores del sitio */
+    /* 
+    -------------------------------------
+        --- Colores del sitio web ---
+    -------------------------------------
+    */
+
+    /* Branding colors */
+    --bg-body: #fefefe;
+    --bg-color--images: #222;
+
+    --bg-menu-nav: #fff;
+    --bg-menu-ul-rwd: #aa3c39;
+
+    --bg-menu-item: lime;
+
+    --bg-menu-item--hover: #ffffff33;
+    --bg-submenu: #55771490;
+    --bg-submenu-rwd: #557714;
+
+    --bg-menu-label: #fff;
+    --bg-menu-label--checked: #fff;
+
     --color-1: #aa3c39;
     --color-2: #557714;
     --color-3: #226666;
     --color-4: #003133;
 
     --color-texto: #666;
-    --bg-body: #fefefe;
-
-    --bg-submenu: #55771480;
-
     --color-a: #557714;
     --color-a--hover: #aa3c39;
 
-    --bg-color--images: #222;
+    --color-menu-item: #557714;
+    --color-submenu-item: #fff;
+    --color-menu-item-rwd: #fff;
+    --color-menu-item--hover: #aa3c39;
+    --color-menu-item-rwd--hover: yellow;
+    --color-menu-label: #aa3c39;
+    --color-menu-label--checked: #226666;
+
+    --color-outline-offset: lime;
+
+    --border-color-menu-item: #fff;
+
+    --box-shadow-menu: 0 1px 2px #00000030;
+
+    /* 
+    ---------------------------
+        --- Maquetación ---
+    ---------------------------
+    */
+
+    --padding-body-xs: 4vw;
+    --padding-body-m: 7.5vw;
+    --padding-body-l: 10vw;
+
+    /* body > header */
+
+    --h-menu: 3.5rem;
+    --h-logo-header: 3rem;
+    --h-menu-items: 3rem;
+
+    /* body > nav */
+    /* body > main */
+    /* body > footer */
+
+    /* --h-menu: 3.5rem; */
+    --logo-h: 3rem;
+    --h-logo-header: 3rem;
+    --h-pepe: 3rem;
+
+    /* Queries */
+
+    /* Logo */
+    --marca-agua-h: 5rem;
+
+    --menu-bg: #1f2937;
+    --menu-bg-hover: #374151;
+    --menu-text: #ffffff;
+    --menu-accent: #fbbf24;
+    --menu-focus: #fbbf24;
+    --menu-padding: 0.75rem 1.25rem;
+
+    --ratio-galeria: 3/2;
+    /* --h-carrousel: 50vh; */
+    --ratio-carrousel: 3/2;
+
+    /* 
+    -------------------------------------
+        --- Variables Font Size ---
+    ------------------------------------
+    */
 
     /* Fonts */
     --font-size-m: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -31,6 +107,18 @@
     /* --font-size-m */
 
     /* Imágenes del sitio  */
+
+    /* --- Logo --- */
+
+    /* 
+    -----------------------------
+        --- Images URLs ---
+    -----------------------------
+    */
+
+    --logo-url: url("../svg/logo.svg");
+    --logo-ratio: 242/160;
+
     --banner--origin: url("../img/banner-origin.webp");
     --banner--large: url("../img/banner-large.webp");
     --banner--medium: url("../img/banner-medium.webp");
@@ -90,20 +178,4 @@
     --carrousel-5--medium-large: url("https://pixfill.dev/768x512/11c09d/ffffff");
     --carrousel-5--large: url("https://pixfill.dev/1024x683/11c09d/ffffff");
     --carrousel-5--full: url("https://pixfill.dev/1920x1280/11c09d/ffffff");
-
-    /* Logo */
-    --logo-url: url("../svg/logo.svg");
-    --logo-ratio: 242/160;
-    --marca-agua-h: 5rem;
-
-    --menu-bg: #1f2937;
-    --menu-bg-hover: #374151;
-    --menu-text: #ffffff;
-    --menu-accent: #fbbf24;
-    --menu-focus: #fbbf24;
-    --menu-padding: 0.75rem 1.25rem;
-
-    --ratio-galeria: 3/2;
-    /* --h-carrousel: 50vh; */
-    --ratio-carrousel: 3/2;
 }

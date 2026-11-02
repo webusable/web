@@ -81,7 +81,7 @@ h6 {
 
 h3 {
     &::first-letter {
-        color: blue;
+        color: var(--color-4);
     }
 }
 

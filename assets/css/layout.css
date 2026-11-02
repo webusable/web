@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+/* 1. Mobile-first base styles (no query) */
+:root {
+    --bg: #ffffff;
+    --text: #111827;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font:
+        16px/1.6 system-ui,
+        sans-serif;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr; /* stacked on phones */
+    gap: 24px;
+    padding: 16px;
+}
+
+/* 2. Tablet and up: introduce a sidebar (range syntax) */
+@media (width >= 768px) {
+    .layout {
+        grid-template-columns: 1fr 280px;
+        padding: 24px;
+    }
+}
+
+/* 3. Desktop: widen the content column and cap the page */
+@media (width >= 1024px) {
+    .layout {
+        max-width: 1200px;
+        margin-inline: auto;
+        grid-template-columns: 1fr 320px;
+    }
+}
+
+/* 4. Honor the user's dark theme preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0f172a;
+        --text: #e5e7eb;
+    }
+}
+
+/* 5. Respect reduced-motion requests */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -16,24 +16,19 @@ a {
     }
 }
 
-/* Maquetación básica */
-
-main {
-    min-height: 100vh;
-}
-
 figure {
     margin: 0;
 }
 
 /* 
--------------------------------------------
-        --- Cabecera del sitio  ---
--------------------------------------------
+-------------------------------------------------------
+        --- Barra de cabecera del sitio  ---
+-------------------------------------------------------
 */
 
 body {
     position: relative;
+
     & > header {
         z-index: 3;
     }
@@ -42,46 +37,50 @@ body {
     }
 }
 
-body > header,
-body > nav.principal {
-    position: fixed;
-    top: 0;
-    height: 3.5rem;
-}
-
-body > header {
-    display: flex;
-    align-items: center;
-
-    /* To Do @media queries */
-    /* padding-left: 7.5vw; */
-
-    & a {
-        & figure.logo {
-            background-image: url("../svg/logo.svg");
-            /* width: 4.20283rem; */
-            height: 3rem;
-            width: calc(3rem * var(--logo-ratio));
-            /* aspect-ratio: 242/160; */
-            margin: 0;
-            /* margin-left: 1em; */
-            /* margin-right: 1em; */
-
-            background-color: transparent;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: cover;
-            background-attachment: scroll;
-            background-origin: border-box;
-            filter: none;
-        }
+body {
+    & > header,
+    & > nav.principal {
+        position: fixed;
+        top: 0;
+        height: var(--h-menu);
     }
 }
 
-body > nav {
-    /* left: 0; */
-    width: 100%;
+body {
+    & > header {
+        display: flex;
+        align-items: center;
+
+        & a {
+            & figure.logo {
+                height: var(--h-logo-header);
+                width: calc(var(--logo-h) * var(--logo-ratio));
+                /* aspect-ratio: var(--logo-ratio); */
+                margin: 0;
+
+                background-image: url("../svg/logo.svg");
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: cover;
+                background-color: transparent;
+                background-attachment: scroll;
+                background-origin: border-box;
+
+                filter: none;
+            }
+        }
+    }
+
+    & > nav.principal {
+        width: 100%;
+    }
 }
+
+/* 
+-------------------------------------------------------
+        --- Fin de Barra de cabecera del sitio  ---
+-------------------------------------------------------
+*/
 
 body main {
     min-height: 100%;
@@ -105,15 +104,6 @@ body main {
 
 */
 
-/*
-body {
-    position: relative;
-}
-body > header {
-    position: fixed;
-    top: 0;
-    height: 3.5rem;
-}
 body > nav {
     position: fixed;
     top: 0;
@@ -121,7 +111,7 @@ body > nav {
     width: 100%;
 }
 body > nav ul li a {
-    line-height: 3.5rem;
+    /* line-height: 3.5rem; */
 }
 body main {
     min-height: 100%;
@@ -132,17 +122,11 @@ body main {
 }
 @media screen and (min-width: 49rem) {
     body main {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
         justify-content: space-between;
     }
 }
-*/
 
 /* 
 -------------------------------------------------
@@ -162,29 +146,31 @@ body {
     }
 
     & nav.principal {
-        padding-right: 4vw;
+        /* padding-right: 4vw; */
     }
 
     & main > section > article {
         padding: 5vh;
-        padding-left: 4vw;
-        padding-right: 4vw;
+        padding-left: var(--padding-body-xs);
+        padding-right: var(--padding-body-xs);
     }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 600px) {
     body {
         & > header {
-            padding-left: 7.5vw;
+            padding-left: var(--padding-body-m);
         }
 
         & nav.principal {
-            padding-right: 7.5vw;
+            & > ul {
+                padding-right: var(--padding-body-m);
+            }
         }
 
         & main > section > article {
-            padding-left: 7.5vw;
-            padding-right: 7.5vw;
+            padding-left: var(--padding-body-m);
+            padding-right: var(--padding-body-m);
         }
     }
 }
@@ -192,16 +178,18 @@ body {
 @media (min-width: 1024px) {
     body {
         & > header {
-            padding-left: 10vw;
+            padding-left: var(--padding-body-l);
         }
 
         & nav.principal {
-            padding-right: 10vw;
+            & > ul {
+                padding-right: var(--padding-body-l);
+            }
         }
 
         & main > section > article {
-            padding-left: 10vw;
-            padding-right: 10vw;
+            padding-left: var(--padding-body-l);
+            padding-right: var(--padding-body-l);
         }
     }
 }
@@ -245,46 +233,39 @@ body {
 }
 
 /* 
-    --- Class: Underline From Center ---
-        by Hover.css
+    --- antigua Class: Underline From Center ---
+        de Hover.css
 
         para todos los enlaces del sitio
+
+        ahora mejorada sustituyendo el :beefore por 
+        un background-image que crece
 */
 
 a:not(.no-border) {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    overflow: hidden;
+    background-image: linear-gradient(
+        var(--color-a--hover),
+        var(--color-a--hover)
+    );
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 0 2px;
+    transition: background-size 0.3s ease-out;
 
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    transform: perspective(1px) translateZ(0);
-
-    &::before {
-        position: absolute;
-        content: "";
-        height: 2px;
-        z-index: -1;
-        left: 50%;
-        right: 50%;
-        bottom: 0;
-        background: var(--color-a--hover);
-
-        transition-property: left, right;
-        transition-duration: 0.3s;
-        transition-timing-function: ease-out;
+    &:focus-visible {
+        color: var(--color-a--hover);
+        background-size: 100% 2px;
     }
 
-    &:focus,
-    &:target,
-    &:hover {
-        outline-width: 0;
-        color: var(--color-a--hover);
-
-        &::before {
-            left: 0;
-            right: 0;
+    @media (hover: hover) {
+        &:hover {
+            color: var(--color-a--hover);
+            background-size: 100% 2px;
         }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
     }
 }
 

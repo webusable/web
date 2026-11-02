@@ -1,157 +1,317 @@
 @charset "UTF-8";
 
-nav.principal {
-    position: relative;
+/* :root { */
+/* --h-menu: 3.5rem; */
+/* --h-menu-items: var(--h-logo-header); */
 
-    /* Ocultamiento accesible: el checkbox sigue siendo enfocable */
+/* --padding-body-m: 7.5vw; */
+/* --breakpoint-menu: 600px; */
+/* } */
+
+/* ================ Móvil (base) ================ */
+/* 
+    --- Maquetación de las listas y enlaces  ---
+        unchecked: menu closed
+*/
+
+/* La lista del menú cerrada por defecto */
+nav.principal {
+    /* Todas las listas */
+    & ul {
+        margin: 0;
+        paddin: 0;
+        list-style: none;
+    }
+
+    /* Lista cerrada por defecto; con scroll si no cabe */
+    & > ul {
+        /* padding: var(--padding-body-m);
+        padding-top: calc(var(--padding-body-m) * 2 / 3);
+        padding-bottom: calc(var(--padding-body-m) * 2 / 3); */
+
+        /* Scroll menu */
+        max-height: calc(100vh - var(--h-menu));
+        max-height: calc(100dvh - var(--h-menu));
+        overflow-y: auto;
+        /* Impide scroll del fondo */
+        overscroll-behavior: contain;
+
+        & > li > ul {
+            margin-left: 4em;
+            border-radius: 5px;
+        }
+    }
+
+    a {
+        display: block;
+        /* objetivo táctil ≥ 44px */
+        min-height: var(--h-menu-items);
+        line-height: var(--h-menu);
+        padding: 0.75em 1em;
+
+        /* width: 100%; */
+        /* height: 100%; */
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:focus-visible {
+            outline: 3px solid;
+            outline-offset: -3px;
+        }
+    }
+}
+
+/* 
+    --- La botonera del menú con input + label  ---
+        Menú cerrado el inicio 
+*/
+
+nav.principal {
+    /* 
+        Ocultamiento accesible: 
+        el checkbox sigue siendo enfocable 
+        pulsando el <label> 
+        con ratón o barra espaciadora
+    */
+
+    /* nav.principal > input  */
     & #icon-menu {
         position: absolute;
         width: 1px;
         height: 1px;
-        margin: -1px;
-        padding: 0;
+        overflow: hidden;
         clip-path: inset(50%);
-        white-space: nowrap;
-        border: 0;
-        overflow: hidden;
 
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-        clip: rect(1px, 1px, 1px, 1px);
-        padding: 0 !important;
-        border: 0 !important;
-        overflow: hidden;
-    }
+        /* nav.principal > label */
+        & + label {
+            display: block;
+            line-height: var(--h-menu);
+            text-align: center;
 
-    & ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+            cursor: pointer;
 
-    & a {
-        display: block;
-        padding: 1rem 1.5rem;
-        text-decoration: none;
-
-        &:focus-visible {
-            outline: 2px solid; /* el color va en colores.css */
-            outline-offset: -2px;
-        }
-    }
-
-    /* Botón hamburguesa (móvil) */
-    & #icon-menu + label {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.75rem; /* Espacio entre el icono y el texto opcional del label */
-        line-height: 3.5rem;
-        padding-inline: 1.5rem;
-        font-weight: bold;
-        cursor: pointer;
-        user-select: none;
-
-        /* Generamos las tres líneas horizontales por defecto (Menú Cerrado) */
-        &::before {
-            content: "";
-            display: inline-block;
-            width: 1.25rem;
-            height: 1rem;
-            /* Patrón de líneas usando gradientes CSS puros */
-            background: linear-gradient(to bottom, currentColor 0%, currentColor 20%, transparent 20%, transparent 40%, currentColor 40%, currentColor 60%, transparent 60%, transparent 80%, currentColor 80%, currentColor 100%);
-        }
-    }
-
-    /* Cambiar el icono a flecha hacia abajo cuando el menú está abierto */
-    & #icon-menu:checked + label::before {
-        content: "";
-        /* Dibujamos una flecha hacia abajo usando un triángulo con border o clip-path */
-        width: 0.8rem;
-        height: 0.5rem;
-        background-color: currentColor;
-        /* Forma de flecha hacia abajo con clip-path */
-        clip-path: polygon(0 0, 100% 0, 50% 100%);
-        background: currentColor; /* Se adapta automáticamente al color del texto */
-    }
-
-    & #icon-menu:focus-visible + label {
-        outline: 2px solid;
-        outline-offset: -2px;
-    }
-
-    /* Lista principal: cerrada en móvil */
-    & > ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-
-        & li {
-            width: 100%;
-            border-bottom: 1px solid;
-        }
-
-        /* Submenú móvil: SIEMPRE ABIERTO */
-        & ul {
-            display: flex;
-            flex-direction: column;
-            padding-inline-start: 1rem;
-
-            & li {
-                border-bottom: 0;
+            /* 
+                Icon tipo menú hamburguesa
+                3 lineas horizontales indicador de Menú Cerrado 
+                content: "☰" ó "&#9776;" o "\2630"
+            */
+            &::before {
+                content: "☰";
+                display: inline-block;
+                /* El doble de ancho para dejar espacio hasta el label */
+                width: 2em;
+                height: 100%;
+                /* Aspecto en negrita */
+                font-weight: 500;
+                -webkit-text-stroke: 1px currentColor;
             }
         }
 
-        /* & li:is(:hover, :focus-within) > ul {
-            display: block;
-        } */
+        /*
+            :focus-visible se activa cuando el elemento tiene el foco 
+            y el navegador considera que hay que mostrarlo, normalmente al navegar con Tab. 
+            Al hacer clic con el ratón no se activa, así se muestra a quien no usa teclado.
+        */
+        &:focus-visible + label {
+            outline: 3px solid var(--color-outline-offset);
+            outline-offset: -3px;
+        }
+    }
+}
+
+/*
+    --- El mecanismo básico: :checked ---
+*/
+
+nav.principal {
+    /* Menú cerrado al cargar y al unchecked */
+    & > ul {
+        display: none;
     }
 
-    & #icon-menu:checked ~ ul {
-        display: flex;
-    }
-
-    /* ===== Escritorio ===== */
-    @media (min-width: 40rem) {
-        & #icon-menu,
-        & #icon-menu + label {
-            display: none;
+    & #icon-menu {
+        &:checked {
+            & + label {
+                /*
+                    Botón close (check para cerrar)
+                    content: "✘" ó 'U+2718' ó "\2718" 
+                */
+                &::before {
+                    content: "✘";
+                }
+            }
         }
 
-        & > ul {
+        /* Menú abierto al checked */
+        &:checked ~ ul {
+            display: block;
+        }
+    }
+}
+
+/* 
+    --- Los colores  ---
+        :| un | checked
+*/
+
+nav.principal {
+    background-color: var(--bg-menu-nav);
+    box-shadow: var(--box-shadow-menu);
+
+    a {
+        color: var(--color-menu-item-rwd);
+    }
+
+    & > ul {
+        background-color: var(--bg-menu-ul-rwd);
+
+        & > li {
+            & ul {
+                background-color: var(--bg-submenu-rwd);
+            }
+        }
+
+        li {
+            &:focus-within > a {
+                color: var(--color-menu-item-rwd--hover);
+            }
+
+            &:active,
+            &:focus-visible {
+                background-color: var(--bg-menu-item--hover);
+                color: var(--color-menu-item--hover);
+            }
+
+            /* 
+                Aplica :hover solo en dispositivos que realmente lo tienen, 
+                Usa :active para dar respuesta al toque sin que quede pegado: 
+            */
+            @media (hover: hover) {
+                &:hover {
+                    background-color: var(--bg-menu-item--hover);
+                    color: var(--color-menu-item--hover);
+                }
+            }
+        }
+    }
+
+    & #icon-menu {
+        & + label {
+            /* Icon menu close. Por defecto el menú está cerrado */
+            background-color: var(--bg-menu-label);
+            color: var(--color-menu-label);
+        }
+
+        /* Menú abierto al checked */
+        &:checked {
+            & + label {
+                background-color: var(--bg-menu-label--checked);
+                color: var(--color-menu-label--checked);
+            }
+        }
+
+        &:checked ~ ul {
+            /* display: block; */
+        }
+    }
+}
+
+/* border-bottom linear-gradient */
+
+nav.principal {
+    & > ul {
+        & > li,
+        & > li > ul > li {
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background: linear-gradient(
+                    to right,
+                    transparent,
+                    var(--border-color-menu-item) 50%,
+                    transparent
+                );
+            }
+
+            &:last-child::before {
+                content: none;
+            }
+        }
+    }
+}
+
+/* =========== Escritorio ================ */
+/*      --- Pantallas mayores --- */
+
+@media (min-width: 600px) {
+    nav.principal {
+        /* Anulando la regla de inicio */
+
+        & #icon-menu {
+            & + label {
+                display: none;
+            }
+        }
+
+        a {
+            /* padding-block	Eje vertical	padding-top + padding-bottom */
+            padding-block: 0;
+            /* padding-inline	Eje horizontal	padding-left + padding-right */
+            padding-inline: 1.25rem;
+        }
+
+        /* 
+            Barra horizontal siempre visible.
+            También cuando quedase marcado :checked desde el tamaño móvil
+        */
+
+        & > ul,
+        & #icon-menu:checked ~ ul {
             display: flex;
-            flex-direction: row;
-            justify-content: center;
+            justify-content: end;
             align-items: center;
+            padding: 0;
+            max-height: none;
+            /* Para que el posible scroll del móvil no recorte el desplegable */
+            overflow: visible;
+        }
+
+        /* border-bottom linear-gradient */
+        & > ul {
+            & > li,
+            & > li > ul > li {
+                &::before {
+                    content: none;
+                }
+            }
 
             & > li {
-                position: relative;
-                width: auto;
-                border-bottom: 0;
-
-                & > a {
-                    padding: 1rem;
-                }
-
+                /* Submenú flotante */
                 & > ul {
                     display: none;
+
                     position: absolute;
                     top: 100%;
                     left: 0;
-                    z-index: 10;
-                    min-width: 12rem;
-                    padding-inline-start: 0;
+                    /* z-index: 10; */
+                    min-width: 150%;
+                    margin-left: 0;
+                    padding: 0;
+                    border-radius: 0 0 5px 5px;
+                    box-shadow: 0 6px 12px rgb(0 0 0 / 0.3);
 
-                    & li {
+                    & > li {
                         width: 100%;
-                    }
-                    & a {
-                        padding: 0.75rem 1.25rem;
                     }
                 }
 
+                /* Se abre con ratón y con teclado */
                 &:is(:hover, :focus-within) > ul {
                     display: block;
                 }
@@ -160,20 +320,42 @@ nav.principal {
     }
 }
 
-nav.principal {
-    #icon-menu + label {
-        color: #fff;
-    }
-    background-color: #000;
+/* Colores */
 
-    & > ul {
-        background-color: #fff;
+@media (min-width: 600px) {
+    nav.principal {
+        /* background-color: var(--bg-menu-nav); */
 
-        & li > ul {
-            background-color: var(--bg-submenu);
+        a {
+            color: var(--color-menu-item);
+        }
 
-            & > li > a {
-                color: #fff;
+        & > ul {
+            background-color: transparent;
+
+            li {
+                &:focus-within > a {
+                    color: var(--color-menu-item--hover);
+                }
+
+                @media (hover: hover) {
+                    &:hover {
+                        color: var(--color-menu-item--hover);
+                    }
+                }
+            }
+
+            & > li {
+                /* Submenú flotante */
+                & > ul {
+                    background-color: var(--bg-submenu);
+                    border-radius: 0 0 5px 5px;
+                    box-shadow: 5px 5px 10px rgb(0 0 0 / 0.3);
+
+                    & li a {
+                        color: var(--color-submenu-item);
+                    }
+                }
             }
         }
     }

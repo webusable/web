@@ -10,26 +10,17 @@
         <!-- Indéxame NO y sígueme NO -->
         <meta name="robots" content="noIndex, noFollow" />
         <!-- Breve descripción del sitio que se verá en los resultados de búsqueda -->
-        <meta
-            name="description"
-            content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1304, Elaboración de Plantillas y formularios"
-        />
+        <meta name="description" content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1304, Elaboración de Plantillas y formularios" />
 
         <!-- Utilícese una hoja de estilos Normalize -->
-        <link
-            rel="stylesheet"
-            href="https://necolas.github.io/normalize.css/latest/normalize.css"
-        />
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
 
         <!-- Hojas de estilos de terceros -->
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
 
         <!-- Hover.css de ianlunn.github.io -->
 
@@ -42,6 +33,7 @@
 
         <link rel="stylesheet" href="../assets/css/typografia.css" />
         <link rel="stylesheet" href="../assets/css/menu.css" />
+        <link rel="stylesheet" href="../assets/css/formularios.css" />
         <link rel="stylesheet" href="../assets/css/estilos.css" />
 
         <!-- Título de la pestaña del navegador -->
@@ -52,25 +44,16 @@
         <header>
             <a href="../index.html" class="no-border" title="Página principal">
                 <figure class="logo"></figure>
-                <h1 class="pechado">
-                    Elaboración de plantillas y formularios (UF1304)
-                </h1>
+                <h1 class="pechado">Elaboración de plantillas y formularios (UF1304)</h1>
             </a>
             <!-- Slogan -->
-            <p class="pechado">
-                Curso de Confección Publicación de Páginas Web (IFCD0110)
-            </p>
+            <p class="pechado">Curso de Confección Publicación de Páginas Web (IFCD0110)</p>
         </header>
 
         <nav class="principal" aria-label="Navegación principal">
             <h2 class="pechado">Menú Principal</h2>
             <input id="icon-menu" name="icon-menu" type="checkbox" />
-            <label
-                for="icon-menu"
-                class="icon-menu"
-                aria-label="Abrir/Cerrar menú"
-                >Menú</label
-            >
+            <label for="icon-menu" class="icon-menu" aria-label="Abrir/Cerrar menú">Menú</label>
             <ul>
                 <li>
                     <a href="../index.html">Inicio</a>
@@ -106,100 +89,53 @@
                 </header>
                 <article>
                     <h3>Formulario de contacto</h3>
-                    <form
-                        action="enviado.html"
-                        method="post"
-                        class="form"
-                        id="form"
-                    >
+                    <form action="enviado.html" method="post" enctype="multipart/form-data" class="form" id="form">
                         <fieldset>
                             <legend>Datos Personales</legend>
                             <ul>
                                 <li>
                                     <label for="name">Nombre</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                        placeholder="Tu nombre"
-                                        required
-                                    />
+                                    <input type="text" name="name" id="name" placeholder="Tu nombre" required />
                                 </li>
                                 <li>
                                     <label for="email">E-mail</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        placeholder="Correo electrónico"
-                                        required
-                                    />
+                                    <input type="email" name="email" id="email" placeholder="Correo electrónico" required />
                                 </li>
                                 <li>
                                     <label for="tfno">Teléfono</label>
-                                    <input
-                                        type="tel"
-                                        name="tfno"
-                                        id="tfno"
-                                        placeholder="Teléfono"
-                                    />
+                                    <input type="tel" name="tfno" id="tfno" placeholder="Teléfono" />
                                 </li>
                                 <li>
                                     <label for="edad">Edad</label>
-                                    <input
-                                        type="number"
-                                        name="edad"
-                                        id="edad"
-                                        placeholder="Tu edad"
-                                    />
+                                    <input type="number" name="edad" id="edad" placeholder="Tu edad" />
                                 </li>
                                 <li>
-                                    <input
-                                        type="radio"
-                                        name="coche"
-                                        id="coche-si"
-                                        value="Si"
-                                    />
-                                    <label for="coche-si"
-                                        >Coche propio Si</label
-                                    >
+                                    <input type="radio" name="coche" id="coche-si" value="Si" />
+                                    <label for="coche-si">Coche propio Si</label>
                                 </li>
                                 <li>
-                                    <input
-                                        type="radio"
-                                        name="coche"
-                                        id="coche-no"
-                                        value="No"
-                                    />
-                                    <label for="coche-no"
-                                        >Coche propio No</label
-                                    >
+                                    <input type="radio" name="coche" id="coche-no" value="No" />
+                                    <label for="coche-no">Coche propio No</label>
                                 </li>
                                 <li>
-                                    <input
-                                        type="checkbox"
-                                        name="acepto"
-                                        id="acepto"
-                                        required
-                                    />
-                                    <label for="acepto"
-                                        >Acepto el tratamiento de mis datos
-                                        personales</label
-                                    >
+                                    <input type="checkbox" name="acepto" id="acepto" required />
+                                    <label for="acepto">Acepto el tratamiento de mis datos personales</label>
                                 </li>
                                 <li>
                                     <label for="mensaje">Tu mensaje</label>
-                                    <textarea
-                                        name="menaje"
-                                        id="mensaje"
-                                        cols="30"
-                                        rows="5"
-                                        placeholder="Escribe tu mensaje aquí"
-                                        required
-                                    ></textarea>
+                                    <textarea name="menaje" id="mensaje" cols="30" rows="5" placeholder="Escribe tu mensaje aquí" required></textarea>
                                 </li>
                             </ul>
                         </fieldset>
+                        <p id="errores"></p>
+                        <ul class="enviar">
+                            <li>
+                                <input type="submit" value="Enviar" id="enviar" />
+                            </li>
+                            <li>
+                                <input type="reset" value="Borrar" />
+                            </li>
+                        </ul>
                     </form>
                 </article>
             </section>

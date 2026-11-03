@@ -1,0 +1,80 @@
+/* VARIABLES */
+:root {
+    --color-background: #e9e6e2;
+    --color-white: #ffffff;
+    --color-black: #222222;
+    --color-text: #292929;
+    --color-primary: #df251b;
+    --color-primary-hover: #b91e17;
+
+    --font-main: "Nunito Sans", sans-serif;
+    --font-secondary: "Inter", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 0 auto;
+    padding: 35px 0 70px;
+
+    background: var(--color-white);
+}
+
+main > section {
+    width: 100%;
+    padding: 35px 5%;
+    margin-bottom: 20px;
+}
+
+main article {
+    width: 100%;
+}
+
+main h2,
+main h3,
+main h4,
+main h5 {
+    margin-bottom: 22px;
+
+    color: var(--color-black);
+    font-family: var(--font-secondary);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 750;
+    line-height: 1.2;
+}
+
+main p {
+    margin-bottom: 25px;
+    color: var(--color-text);
+}

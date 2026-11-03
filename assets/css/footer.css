@@ -1,0 +1,179 @@
+/* ==========================
+   FOOTER
+========================== */
+
+.news-footer {
+    width: 100%;
+    background-color: #202020;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 45px 8% 20px;
+    box-sizing: border-box;
+
+    width: min(94%, var(--container-width));
+    margin: 0 auto;
+}
+
+/* Contenedor principal */
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1.2fr;
+    gap: 35px;
+    padding-bottom: 35px;
+}
+
+/* Marca */
+
+.footer-brand h2 {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0 0 15px;
+}
+
+.footer-brand p {
+    color: #bdbdbd;
+    font-size: 11px;
+    line-height: 1.7;
+    max-width: 220px;
+}
+
+/* Redes sociales */
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    width: 25px;
+    height: 25px;
+    /* border: 1px solid #777; */
+    /* border-radius: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: #e63b32;
+    border-color: #e63b32;
+}
+
+/* Columnas */
+
+.footer-column h3,
+.footer-contact h3 {
+    font-size: 11px;
+    font-weight: 600;
+    margin: 5px 0 18px;
+    color: #ffffff;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 11px;
+}
+
+.footer-column a {
+    color: #bdbdbd;
+    font-size: 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #e63b32;
+}
+
+/* Contacto */
+
+.footer-contact p {
+    color: #bdbdbd;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* Parte inferior */
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 18px;
+    border-top: 1px solid #454545;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p,
+.footer-bottom a {
+    font-size: 9px;
+    color: #999999;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: #ffffff;
+}
+
+/* ==========================
+   RESPONSIVE - TABLET
+========================== */
+
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .footer-brand {
+        grid-column: span 3;
+    }
+}
+
+/* ==========================
+   RESPONSIVE - MOBILE
+========================== */
+
+@media (max-width: 600px) {
+    .news-footer {
+        padding: 35px 7% 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 20px;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+    }
+
+    .footer-contact {
+        grid-column: span 2;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}

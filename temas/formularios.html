@@ -96,11 +96,26 @@
                             <legend>Formulario de inscripción a un curso</legend>
 
                             <fieldset>
+                                <legend>Datos Personales</legend>
+                                <ul>
+                                    <li>
+                                        <label for="edad">Edad</label>
+                                        <input type="number" name="edad" id="edad" min="18" max="120" />
+                                    </li>
+                                    <li>
+                                        <label for="precio-vivienda">Elige un precio de vivienda:</label>
+                                        <input type="range" name="precio-vivienda" id="precio-vivienda" min="20000" step="5000" max="750000" value="100000" />
+                                        <output for="precio-vivienda"></output>
+                                    </li>
+                                </ul>
+                            </fieldset>
+
+                            <fieldset>
                                 <legend>Nivel de conocimientos</legend>
 
                                 <ul>
                                     <li>
-                                        <input type="radio" name="nivel" id="nivel-0" value="0" />
+                                        <input type="radio" name="nivel" id="nivel-0" value="0" required />
 
                                         <label for="nivel-0">Principiante</label>
                                     </li>
@@ -138,6 +153,64 @@
                                         <label for="interes-5">Marketing Digital</label>
                                     </li>
                                 </ul>
+                            </fieldset>
+                            <fieldset>
+                                <legend>¿Tienes experiencia previa?</legend>
+                                <ul>
+                                    <li>
+                                        <input type="radio" name="experiencia" id="experiencia-1" value="Si" />
+                                        <label for="experiencia-1">Si</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="experiencia" id="experiencia-0" value="No" />
+                                        <label for="experiencia-0">No</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset>
+                                <legend>¿En qué modalidad quieres realizar el curso?</legend>
+                                <select name="modalidad">
+                                    <option value="">-- Seleccione una opción --</option>
+                                    <option value="1" selected>Presencial</option>
+                                    <option value="2">Semipresencial</option>
+                                    <option value="3">Teleformación</option>
+                                </select>
+                            </fieldset>
+                            <fieldset>
+                                <legend>¿Qué dias tienes disponibilidad?</legend>
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" name="dias[]" id="dia-1" value="Lunes" />
+                                        <label for="dia-1">Lunes</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="dias[]" id="dia-2" value="Martes" />
+                                        <label for="dia-2">Martes</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="dias[]" id="dia-3" value="Miércoles" required />
+                                        <label for="dia-3">Miércoles</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="dias[]" id="dia-4" value="Jueves" />
+                                        <label for="dia-4">Jueves</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="dias[]" id="dia-5" value="Viernes" />
+                                        <label for="dia-5">Viernes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Cómo has conocido elcurso</legend>
+                                <select name="referencias" required>
+                                    <!-- <option value="" disabled selected>-- Seleccione una opción --</option> -->
+                                    <option value="">-- Seleccione una opción --</option>
+                                    <option value="1">Redes Sociales</option>
+                                    <option value="2">Internet</option>
+                                    <option value="3">Amigos o Familiares</option>
+                                    <option value="4">Publicidad</option>
+                                </select>
                             </fieldset>
                         </fieldset>
                         <ul>

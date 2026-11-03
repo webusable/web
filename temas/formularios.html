@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <!-- Juego de caracteres de casi todos los idiomas humanos (incluidos ñ, tildes ...) -->
+        <meta charset="utf-8" />
+        <!-- Escala inicial y renderizado _responsive_ por el ancho del dispositivo -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Compatibilidad con Microsoft Explorer -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- Indéxame NO y sígueme NO -->
+        <meta name="robots" content="noIndex, noFollow" />
+        <!-- Breve descripción del sitio que se verá en los resultados de búsqueda -->
+        <meta name="description" content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1304, Elaboración de Plantillas y formularios" />
+
+        <!-- Utilícese una hoja de estilos Normalize -->
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+
+        <!-- Hojas de estilos de terceros -->
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+        <!-- Hover.css de ianlunn.github.io -->
+
+        <!-- Ruta a nuestras hojas de estilos -->
+        <link rel="stylesheet" href="../assets/css/visibilidad.css" />
+        <link rel="stylesheet" href="../assets/css/vars.css" />
+        <link rel="stylesheet" href="../assets/css/transitions.css" />
+        <link rel="stylesheet" href="../assets/css/images.css" />
+        <link rel="stylesheet" href="../assets/css/carrousel.css" />
+
+        <link rel="stylesheet" href="../assets/css/typografia.css" />
+        <link rel="stylesheet" href="../assets/css/menu.css" />
+        <link rel="stylesheet" href="../assets/css/formularios.css" />
+        <link rel="stylesheet" href="../assets/css/estilos.css" />
+
+        <!-- Título de la pestaña del navegador -->
+        <title>Plantillas y formularios | Contacto</title>
+    </head>
+
+    <body>
+        <header>
+            <a href="../index.html" class="no-border" title="Página principal">
+                <figure class="logo"></figure>
+                <h1 class="pechado">Elaboración de plantillas y formularios (UF1304)</h1>
+            </a>
+            <!-- Slogan -->
+            <p class="pechado">Curso de Confección Publicación de Páginas Web (IFCD0110)</p>
+        </header>
+
+        <nav class="principal" aria-label="Navegación principal">
+            <h2 class="pechado">Menú Principal</h2>
+            <input id="icon-menu" name="icon-menu" type="checkbox" />
+            <label for="icon-menu" class="icon-menu" aria-label="Abrir/Cerrar menú">Menú</label>
+            <ul>
+                <li>
+                    <a href="../index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="#">Temas</a>
+                    <ul>
+                        <li>
+                            <a href="#">HTML5</a>
+                        </li>
+
+                        <li>
+                            <a href="#">CSS3</a>
+                        </li>
+                        <li>
+                            <a href="#">Formularios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Nosotros</a>
+                </li>
+                <li>
+                    <a href="../pages/contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="agua">
+            <section>
+                <header class="img-before portada">
+                    <h2>Formularios</h2>
+                </header>
+
+                <article>
+                    <h3>Formularios varios</h3>
+
+                    <form action="../pages/enviado.html" method="get" class="form" enctype="multipart/form-data">
+                        <fieldset>
+                            <legend>Formulario de inscripción a un curso</legend>
+
+                            <fieldset>
+                                <legend>Nivel de conocimientos</legend>
+
+                                <ul>
+                                    <li>
+                                        <input type="radio" name="nivel" id="nivel-0" value="0" />
+
+                                        <label for="nivel-0">Principiante</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="nivel" id="nivel-1" value="1" />
+                                        <label for="nivel-1">Intermedio</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="nivel" id="nivel-2" value="2" />
+                                        <label for="nivel-2">Avanzado</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                            <fieldset>
+                                <legend>¿Qué temas te interesan?</legend>
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" name="temas[]" id="interes-1" value="Informática" />
+                                        <label for="interes-1">Informática</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="temas[]" id="interes-2" value="Programación" />
+                                        <label for="interes-2">Programación</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="temas[]" id="interes-3" value="Diseño Gráfico" />
+                                        <label for="interes-3">Diseño Gráfico</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="temas[]" id="interes-4" value="Inteligencia Artificial" />
+                                        <label for="interes-4">Inteligencia Artificial</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="temas[]" id="interes-5" value="Marketing Digital" />
+                                        <label for="interes-5">Marketing Digital</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </fieldset>
+                        <ul>
+                            <li>
+                                <input type="submit" value="Enviar" />
+                            </li>
+                            <li>
+                                <input type="reset" value="Borrar" />
+                            </li>
+                        </ul>
+                    </form>
+                </article>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
+</html>

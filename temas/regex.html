@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <!-- Juego de caracteres de casi todos los idiomas humanos (incluidos ñ, tildes ...) -->
+        <meta charset="utf-8" />
+        <!-- Escala inicial y renderizado _responsive_ por el ancho del dispositivo -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Compatibilidad con Microsoft Explorer -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- Indéxame NO y sígueme NO -->
+        <meta name="robots" content="noIndex, noFollow" />
+        <!-- Breve descripción del sitio que se verá en los resultados de búsqueda -->
+        <meta
+            name="description"
+            content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1304, Elaboración de Plantillas y formularios"
+        />
+
+        <!-- Utilícese una hoja de estilos Normalize -->
+        <link
+            rel="stylesheet"
+            href="https://necolas.github.io/normalize.css/latest/normalize.css"
+        />
+
+        <!-- Hojas de estilos de terceros -->
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Hover.css de ianlunn.github.io -->
+        <!-- <link rel="stylesheet" href="../assets/css/hover.css" /> -->
+
+        <!-- Ruta a nuestras hojas de estilos -->
+        <link rel="stylesheet" href="../assets/css/visibilidad.css" />
+        <link rel="stylesheet" href="../assets/css/vars.css" />
+        <link rel="stylesheet" href="../assets/css/transitions.css" />
+        <link rel="stylesheet" href="../assets/css/images.css" />
+        <link rel="stylesheet" href="../assets/css/carrousel.css" />
+
+        <link rel="stylesheet" href="../assets/css/typografia.css" />
+        <link rel="stylesheet" href="../assets/css/menu.css" />
+        <link rel="stylesheet" href="../assets/css/formularios.css" />
+        <link rel="stylesheet" href="../assets/css/estilos.css" />
+
+        <!-- Título de la pestaña del navegador -->
+        <title>UF1304 | Formularios</title>
+    </head>
+
+    <body>
+        <header>
+            <a href="../index.html" class="no-border" title="Página principal">
+                <figure class="logo"></figure>
+                <h1 class="pechado">Formularios (UF1304)</h1>
+            </a>
+            <!-- Slogan -->
+            <p class="pechado">
+                Curso de Confección Publicación de Páginas Web (IFCD0110)
+            </p>
+        </header>
+
+        <nav class="principal" aria-label="Navegación principal">
+            <h2 class="pechado">Menú Principal</h2>
+            <input id="icon-menu" name="icon-menu" type="checkbox" />
+            <label
+                for="icon-menu"
+                class="icon-menu"
+                aria-label="Abrir/Cerrar menú"
+                >Menú</label
+            >
+            <ul>
+                <li>
+                    <a href="../index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="#">Temas</a>
+                    <ul>
+                        <li>
+                            <a href="#">Transiciones</a>
+                        </li>
+                        <li>
+                            <a href="#">Imágenes</a>
+                        </li>
+                        <li>
+                            <a href="#">Formularios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Nosotros</a>
+                </li>
+                <li>
+                    <a href="../pages/contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="agua">
+            <section>
+                <header class="img-before portada">
+                    <h2>Formularios HTMl5</h2>
+                </header>
+                <article>
+                    <h3>El atributo <code>pattern</code></h3>
+                    <form
+                        class="form"
+                        action="../pages/enviado.html"
+                        method="get"
+                        enctype="multipart/form-data"
+                    >
+                        <!-- 
+                        ==================================================================
+                        NIVEL 1: PATRONES BÁSICOS
+                        Conceptos: clases de caracteres [ ], cuantificadores { } y rangos.
+                        Recuerda: pattern ya exige que coincida TODO el valor, así que
+                        NO se escribe ^ al principio ni $ al final.
+                        ================================================================== 
+                        -->
+                        <fieldset>
+                            <legend>Nivel Básico</legend>
+                            <ul>
+                                <li>
+                                    <label for="nombre">Nombre</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Entre 3 y 50 caracteres.
+                                        - Solo letras del alfabeto español (con tildes, diéressis y ñ) y espacios.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="nombre"
+                                        name="nombre"
+                                        required
+                                        title=""
+                                    />
+                                </li>
+                                <li>
+                                    <label for="cp">Código postal</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Exactamente 5 dígitos.
+                                        - Los dos primeros dígitos (provincia) van del 01 al 52.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="cp"
+                                        name="cp"
+                                        required
+                                        inputmode="numeric"
+                                        title=""
+                                    />
+                                </li>
+                                <li>
+                                    <label for="movil">Teléfono móvil</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Exactamente 9 dígitos, sin espacios ni prefijo.
+                                        - Debe empezar por 6 o 7.
+                                    -->
+                                    <input
+                                        type="tel"
+                                        id="movil"
+                                        name="movil"
+                                        required
+                                        title=""
+                                    />
+                                </li>
+                                <li>
+                                    <label for="color">Color hexadecimal</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Almohadilla (#) seguida de exactamente 6 caracteres hexadecimales (0-9, a-f).
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="color"
+                                        name="color"
+                                        required
+                                        title="# seguida de 6 caracteres hexadecimales. Ejemplo: #1b7f3b"
+                                    />
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- 
+                            ==================================================================
+                            NIVEL 2: PATRONES INTERMEDIOS
+                            Conceptos: partes opcionales ( )? , alternativas | y separadores.
+                            ================================================================== 
+                        -->
+                        <fieldset>
+                            <legend>Nivel Intermedio</legend>
+                            <ul>
+                                <li>
+                                    <label for="dni">DNI</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - 8 dígitos seguidos de una letra (mayúscula o minúscula).
+                                        NOTA: pattern solo comprueba el FORMATO. Calcular si la letra
+                                        es la correcta (resto de dividir entre 23) exige JavaScript o PHP, p.ej.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="dni"
+                                        name="dni"
+                                        required
+                                        title=""
+                                    />
+                                </li>
+                                <li>
+                                    <label for="matricula"
+                                        >Matrícula de coche</label
+                                    >
+                                    <!-- 
+                                        REQUISITOS:
+                                        - 4 dígitos y 3 consonantes (sin vocales ni Ñ ni Q).
+                                        - Puede llevar un espacio o un guion entre números y letras (a votar).
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="matricula"
+                                        name="matricula"
+                                        required
+                                        title=""
+                                    />
+                                </li>
+                                <li>
+                                    <label for="hora">Hora (24 h)</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Formato HH:MM, de 00:00 a 23:59.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="hora"
+                                        name="hora"
+                                        required
+                                        title="Formato HH:MM entre 00:00 y 23:59"
+                                    />
+                                </li>
+                                <li>
+                                    <label for="precio">Precio en euros</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Número entero, o con coma y 1 o 2 decimales. Sin punto ni símbolo €.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="precio"
+                                        name="precio"
+                                        required
+                                        inputmode="decimal"
+                                        title=""
+                                    />
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- 
+                            ==================================================================
+                            NIVEL 3: PATRONES AVANZADOS
+                            Conceptos: grupos repetidos y lookaheads (?= ) para combinar reglas.
+                            ================================================================== 
+                        -->
+                        <fieldset>
+                            <legend>Nivel Avanzado</legend>
+                            <ul>
+                                <li>
+                                    <label for="fecha">Fecha</label>
+                                    <!-- REQUISITOS:
+                                        - Formato dd/mm/aaaa con barras.
+                                        - Día de 01 a 31, mes de 01 a 12, año de 4 dígitos.
+                                        NOTA: no detecta fechas imposibles como 31/02/2025; 
+                                        para eso hace falta JavaScript o type="date".
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="fecha"
+                                        name="fecha"
+                                        required
+                                        title="Formato dd/mm/aaaa. Ejemplo: 04/11/2026"
+                                    />
+                                </li>
+                                <li>
+                                    <label for="usuario"
+                                        >Nombre de usuario</label
+                                    >
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Entre 4 y 16 caracteres en total.
+                                        - Debe empezar por una letra.
+                                        - Después solo letras, números o guion bajo.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="usuario"
+                                        name="usuario"
+                                        required
+                                        title="4 a 16 caracteres, empieza por letra; solo letras, números y _"
+                                    />
+                                </li>
+                                <li>
+                                    <label for="clave">Contraseña</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Mínimo 8 caracteres.
+                                        - Al menos una minúscula, una mayúscula y un número.
+                                    -->
+                                    <input
+                                        type="password"
+                                        id="clave"
+                                        name="clave"
+                                        required
+                                        title="Mínimo 8 caracteres con al menos una minúscula, una mayúscula y un número"
+                                    />
+                                </li>
+                                <li>
+                                    <label for="iban">IBAN español</label>
+                                    <!-- 
+                                        REQUISITOS:
+                                        - Empieza por ES, 2 dígitos de control y 20 dígitos más.
+                                        - Se admiten espacios entre grupos de 4 (opcionales).
+                                        NOTA: no verifica el dígito de control; solo el formato.
+                                        VÁLIDOS: ES9121000418450200051332 | ES91 2100 0418 4502 0005 1332
+                                        INVÁLIDOS: FR9121000418450200051332 | ES91 2100 
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="iban"
+                                        name="iban"
+                                        required
+                                        title=""
+                                    />
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <ul class="botones">
+                            <li>
+                                <input type="submit" value="Comprobar" />
+                            </li>
+                            <li>
+                                <input type="reset" value="Borrar" />
+                            </li>
+                        </ul>
+                    </form>
+                </article>
+                <article>
+                    <h3>Formulario de Préstamo Personal</h3>
+                    <form
+                        class="form"
+                        action="../pages/enviado.html"
+                        method="get"
+                        enctype="multipart/form-data"
+                    >
+                        <!-- Campo oculto: tipo de solicitud -->
+                        <input
+                            type="hidden"
+                            name="tipo"
+                            value="prestamo-personal"
+                        />
+
+                        <!-- ================================= -->
+                        <!-- 1. DATOS PERSONALES -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>1. Datos personales</legend>
+
+                            <ul>
+                                <li>
+                                    <label for="dni">DNI:</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        8 números y una letra mayúscula.
+                                        Los números pueden comenzar por cero.
+                                        La letra debe corresponder al resto módulo 23.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="dni"
+                                        name="dni"
+                                        placeholder="12345678Z"
+                                        maxlength="9"
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="nie">NIE:</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        Comienza por X, Y o Z.
+                                        Después tiene 7 números y una letra.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="nie"
+                                        name="nie"
+                                        placeholder="X1234567L"
+                                        maxlength="9"
+                                        title=""
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="nombre">Nombre:</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        Entre 2 y 30 caracteres.
+                                        Admitir letras españolas, acentos y espacios.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="nombre"
+                                        name="nombre"
+                                        maxlength="30"
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="apellidos">Apellidos:</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        Entre 2 y 60 caracteres.
+                                        Admitir letras, acentos, espacios y guiones.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="apellidos"
+                                        name="apellidos"
+                                        maxlength="60"
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="nacimiento"
+                                        >Fecha de nacimiento:</label
+                                    >
+
+                                    <!-- 
+                                        INPUT HTML5: date.
+                                        Debe ser una fecha comprendida entre 18 y 100 años.
+                                        min y max son restricciones de fecha, no patrones.
+                                    -->
+                                    <input
+                                        type="date"
+                                        id="nacimiento"
+                                        name="nacimiento"
+                                        min=""
+                                        max=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="estadoCivil"
+                                        >Estado civil:</label
+                                    >
+
+                                    <select
+                                        id="estadoCivil"
+                                        name="estadoCivil"
+                                        required
+                                    >
+                                        <option value="">Selecciona...</option>
+                                        <option value="soltero">
+                                            Soltero/a
+                                        </option>
+                                        <option value="casado">Casado/a</option>
+                                        <option value="divorciado">
+                                            Divorciado/a
+                                        </option>
+                                        <option value="viudo">Viudo/a</option>
+                                    </select>
+                                </li>
+
+                                <li>
+                                    <label>Sexo (campo de ejemplo):</label>
+
+                                    <!-- INPUT CLÁSICO: radio -->
+                                    <input
+                                        type="radio"
+                                        name="sexo"
+                                        value="hombre"
+                                    />
+                                    Hombre
+
+                                    <input
+                                        type="radio"
+                                        name="sexo"
+                                        value="mujer"
+                                    />
+                                    Mujer
+
+                                    <input
+                                        type="radio"
+                                        name="sexo"
+                                        value="otro"
+                                    />
+                                    Otro / No especificar
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- ================================= -->
+                        <!-- 2. DATOS DE CONTACTO -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>2. Datos de contacto</legend>
+
+                            <ul>
+                                <li>
+                                    <label for="telefono">Teléfono</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        Exactamente 9 cifras.
+                                        Móvil: comienza por 6 o 7.
+                                        Fijo: comienza por 8 o 9.
+                                        No admitir espacios ni prefijos internacionales.
+                                    -->
+                                    <input
+                                        type="tel"
+                                        id="telefono"
+                                        name="telefono"
+                                        placeholder="600123456"
+                                        maxlength="9"
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="email"
+                                        >Correo electrónico:</label
+                                    >
+
+                                    <!-- 
+                                        INPUT HTML5: email.
+                                        El navegador comprueba la estructura del correo.
+                                        Completar con un pattern para una validación básica.
+                                    -->
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="usuario@dominio.es"
+                                        pattern=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="web"
+                                        >Página web personal:</label
+                                    >
+
+                                    <!-- 
+                                        INPUT HTML5: url.
+                                        El navegador comprueba que tenga formato de URL.
+                                        Probar y mejorar con un pattern
+                                    -->
+                                    <input
+                                        type="url"
+                                        id="web"
+                                        name="web"
+                                        placeholder="https://www.ejemplo.es"
+                                        pattern=""
+                                        title=""
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="contacto"
+                                        >Buscar contacto (ejemplo):</label
+                                    >
+
+                                    <!-- INPUT HTML5: search -->
+                                    <input
+                                        type="search"
+                                        id="contacto"
+                                        name="contacto"
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="password"
+                                        >Contraseña de acceso:</label
+                                    >
+
+                                    <!-- 
+                                        PISTA:
+                                        Entre 8 y 16 caracteres.
+                                        Al menos una mayúscula, una minúscula,
+                                        un número y un carácter especial.
+                                    -->
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        minlength=""
+                                        maxlength=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- ================================= -->
+                        <!-- 3. DOMICILIO -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>3. Domicilio</legend>
+
+                            <ul>
+                                <li>
+                                    <label for="direccion">Dirección:</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        Entre 5 y 80 caracteres.
+                                        Admitir letras, números, espacios,
+                                        comas, puntos, guiones y barras.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="direccion"
+                                        name="direccion"
+                                        maxlength=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="localidad">Localidad:</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        Entre 2 y 50 letras, espacios y guiones.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="localidad"
+                                        name="localidad"
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="cp">Código postal:</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        Exactamente 5 números.
+                                        Los códigos postales españoles empiezan
+                                        por un número entre 01 y 52.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="cp"
+                                        name="cp"
+                                        placeholder="27001"
+                                        minlength=""
+                                        maxlength=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="provincia"
+                                        >Código de provincia:</label
+                                    >
+
+                                    <!-- 
+                                        PISTA:
+                                        Dos cifras entre 01 y 52.
+                                        Ejemplo: 27 para Lugo.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="provincia"
+                                        name="provincia"
+                                        maxlength=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+                                <!-- Agregar un select con provincias españolas buscadas de internet -->
+                            </ul>
+                        </fieldset>
+
+                        <!-- ================================= -->
+                        <!-- 4. SITUACIÓN LABORAL -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>4. Situación laboral</legend>
+
+                            <ul>
+                                <li>
+                                    <label for="empresa"
+                                        >Nombre de la empresa:</label
+                                    >
+
+                                    <!-- 
+                                        PISTA:
+                                        Entre 2 y 60 caracteres.
+                                        Letras, números, espacios, puntos y guiones.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="empresa"
+                                        name="empresa"
+                                        maxlength=""
+                                        title=""
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="cif"
+                                        >CIF/NIF de la empresa:</label
+                                    >
+
+                                    <!-- 
+                                        PISTA:
+                                        Una letra inicial, 7 cifras y un carácter
+                                        de control numérico o alfabético.
+                                        Formato habitual de CIF español.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="cif"
+                                        name="cif"
+                                        placeholder="B12345678"
+                                        maxlength=""
+                                        title=""
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="puesto"
+                                        >Puesto de trabajo:</label
+                                    >
+                                    <!-- También podría ser un desplegable -->
+                                    <input
+                                        type="text"
+                                        id="puesto"
+                                        name="puesto"
+                                        maxlength=""
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="antiguedad"
+                                        >Antigüedad (años):</label
+                                    >
+
+                                    <!-- INPUT HTML5: number -->
+                                    <input
+                                        type="number"
+                                        id="antiguedad"
+                                        name="antiguedad"
+                                        title=""
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="salario"
+                                        >Salario mensual neto (€):</label
+                                    >
+
+                                    <!-- 
+                                        INPUT HTML5: number.
+                                        Mínimo 600 euros.
+                                        Admite decimales de hasta dos cifras.
+                                    -->
+                                    <input
+                                        type="number"
+                                        id="salario"
+                                        name="salario"
+                                        min=""
+                                        max=""
+                                        step=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="contrato"
+                                        >Tipo de contrato:</label
+                                    >
+
+                                    <select
+                                        id="contrato"
+                                        name="contrato"
+                                        required
+                                    >
+                                        <option value="">Selecciona...</option>
+                                        <option value="indefinido">
+                                            Indefinido
+                                        </option>
+                                        <option value="temporal">
+                                            Temporal
+                                        </option>
+                                        <option value="autonomo">
+                                            Autónomo
+                                        </option>
+                                        <option value="funcionario">
+                                            Funcionario
+                                        </option>
+                                    </select>
+                                </li>
+
+                                <li>
+                                    <label for="color"
+                                        >Color identificativo:</label
+                                    >
+
+                                    <!-- INPUT HTML5: color -->
+                                    <input
+                                        type="color"
+                                        id="color"
+                                        name="color"
+                                        value="#174c70"
+                                    />
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- ================================= -->
+                        <!-- 5. CARACTERÍSTICAS DEL PRÉSTAMO -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>5. Características del préstamo</legend>
+
+                            <ul>
+                                <li>
+                                    <label for="importe"
+                                        >Importe solicitado (€):</label
+                                    >
+
+                                    <!-- 
+                                        INPUT HTML5: number.
+                                        Entre 1.000 y 60.000 euros.
+                                        Sin decimales.
+                                    -->
+                                    <input
+                                        type="number"
+                                        id="importe"
+                                        name="importe"
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="plazo">Plazo (meses):</label>
+
+                                    <!-- 
+                                        INPUT HTML5: number.
+                                        Entre 12 y 120 meses.
+                                    -->
+                                    <input
+                                        type="number"
+                                        id="plazo"
+                                        name="plazo"
+                                        min=""
+                                        max=""
+                                        step=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="finalidad"
+                                        >Finalidad del préstamo:</label
+                                    >
+                                    <!-- Ejemplo -->
+                                    <select
+                                        id="finalidad"
+                                        name="finalidad"
+                                        required
+                                    >
+                                        <option value="">Selecciona...</option>
+                                        <option value="reformas">
+                                            Reformas
+                                        </option>
+                                        <option value="vehiculo">
+                                            Vehículo
+                                        </option>
+                                        <option value="estudios">
+                                            Estudios
+                                        </option>
+                                        <option value="viaje">Viaje</option>
+                                        <option value="otros">Otros</option>
+                                    </select>
+                                </li>
+
+                                <li>
+                                    <label for="fecha"
+                                        >Fecha deseada de concesión:</label
+                                    >
+
+                                    <!-- INPUT HTML5: date -->
+                                    <input
+                                        type="date"
+                                        id="fecha"
+                                        name="fecha"
+                                        min=""
+                                        title=""
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="hora"
+                                        >Hora preferida de contacto:</label
+                                    >
+
+                                    <!-- INPUT HTML5: time -->
+                                    <input type="time" id="hora" name="hora" />
+                                </li>
+
+                                <li>
+                                    <label for="mes"
+                                        >Mes previsto de devolución:</label
+                                    >
+
+                                    <!-- INPUT HTML5: month -->
+                                    <input type="month" id="mes" name="mes" />
+                                </li>
+
+                                <li>
+                                    <label for="semana"
+                                        >Semana de inicio del trámite:</label
+                                    >
+
+                                    <!-- INPUT HTML5: week -->
+                                    <input
+                                        type="week"
+                                        id="semana"
+                                        name="semana"
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="fechaHora"
+                                        >Fecha y hora de la cita:</label
+                                    >
+
+                                    <!-- INPUT HTML5: datetime-local -->
+                                    <input
+                                        type="datetime-local"
+                                        id="fechaHora"
+                                        name="fechaHora"
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="valoracion"
+                                        >Valoración de la oferta:</label
+                                    >
+
+                                    <!-- INPUT HTML5: range -->
+                                    <input
+                                        type="range"
+                                        id="valoracion"
+                                        name="valoracion"
+                                        min="0"
+                                        max="10"
+                                        value="5"
+                                    />
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- ================================= -->
+                        <!-- 6. DATOS BANCARIOS -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>6. Datos bancarios</legend>
+
+                            <ul>
+                                <li>
+                                    <label for="iban">IBAN español:</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        ES seguido de 22 cifras.
+                                        Dos cifras de control y veinte cifras de cuenta.
+                                        El patrón valida el formato, no el dígito de control.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="iban"
+                                        name="iban"
+                                        placeholder="ES9121000418450200051332"
+                                        maxlength=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="titular"
+                                        >Titular de la cuenta:</label
+                                    >
+
+                                    <input
+                                        type="text"
+                                        id="titular"
+                                        name="titular"
+                                        pattern=""
+                                        title=""
+                                        required
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="promocion"
+                                        >Código promocional:</label
+                                    >
+
+                                    <!-- 
+                                        PISTA:
+                                        Entre 5 y 10 caracteres.
+                                        Solo letras mayúsculas y números.
+                                    -->
+                                    <input
+                                        type="text"
+                                        id="promocion"
+                                        name="promocion"
+                                        maxlength=""
+                                        title=""
+                                    />
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- ================================= -->
+                        <!-- 7. DOCUMENTACIÓN -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>7. Documentación adjunta</legend>
+
+                            <ul>
+                                <li>
+                                    <label for="dniArchivo"
+                                        >Copia del DNI:</label
+                                    >
+
+                                    <!-- INPUT CLÁSICO: file -->
+                                    <input
+                                        type="file"
+                                        id="dniArchivo"
+                                        name="dniArchivo"
+                                        accept=".pdf,.jpg,.jpeg,.png"
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="nomina">Última nómina:</label>
+
+                                    <input
+                                        type="file"
+                                        id="nomina"
+                                        name="nomina"
+                                        accept=".pdf"
+                                    />
+                                </li>
+
+                                <li>
+                                    <label for="comentarios"
+                                        >Observaciones:</label
+                                    >
+
+                                    <!-- TEXTAREA: no es un input -->
+                                    <textarea
+                                        id="comentarios"
+                                        name="comentarios"
+                                        rows="5"
+                                        maxlength="500"
+                                    ></textarea>
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- ================================= -->
+                        <!-- 8. AUTORIZACIONES -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>8. Autorizaciones y condiciones</legend>
+
+                            <ul>
+                                <li>
+                                    <!-- INPUT CLÁSICO: checkbox -->
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            name="privacidad"
+                                            value="si"
+                                            required
+                                        />
+                                        Acepto la política de privacidad.
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            name="consulta"
+                                            value="si"
+                                            required
+                                        />
+                                        Autorizo la consulta de solvencia.
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            name="comunicaciones"
+                                            value="si"
+                                        />
+                                        Deseo recibir comunicaciones
+                                        comerciales.
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <!-- ================================= -->
+                        <!-- 9. BOTONES -->
+                        <!-- ================================= -->
+
+                        <fieldset>
+                            <legend>9. Envío de la solicitud</legend>
+
+                            <ul>
+                                <li>
+                                    <!-- INPUT CLÁSICO: submit -->
+                                    <input
+                                        type="submit"
+                                        value="Enviar solicitud"
+                                    />
+                                </li>
+
+                                <li>
+                                    <!-- INPUT CLÁSICO: reset -->
+                                    <input
+                                        type="reset"
+                                        value="Borrar formulario"
+                                    />
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </form>
+                </article>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
+</html>

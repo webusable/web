@@ -211,13 +211,12 @@
                                     <!-- 
                                         REQUISITOS:
                                         - Número entero, o con coma y 1 o 2 decimales. Sin punto ni símbolo €.
-                                        EXPLICACIÓN
-                                        - [0-9]*(\.[0-9]{1,2})? 
-                                            - [0-9]* = 1er dígito del 0 al 9 cero o más veces = de nada a 9999999...
-                                            - (\.[0-9]{1,2})? = (Grupo opcional) ? = cero o una vez. 
-                                                - \.[0-9]{1,2} = Un punto (.) seguido de un dígito del 0 al 9 1 o 2 veces = del 0 al 99
+                                        No hace falta pattern aquí. 
+                                        Se puede acotar la entrada con los atributos min, max y step
+                                        El atributo inputmode="decimal" indica al navegador que active el teclado numérico
+
                                     -->
-                                    <input type="number" id="precio" name="precio" inputmode="decimal" title="El precio tiene un máximo de 2 decimales separado con un punto. Sin espacios ni símbolo de moneda" pattern="[0-9]*(\.[0-9]{1,2})?" min="0.01" step="0.01" value="50" />
+                                    <input type="number" id="precio" name="precio" inputmode="decimal" title="El precio tiene un máximo de 2 decimales separado con un punto. Sin espacios ni símbolo de moneda" min="0.01" step="0.01" max="1000000" value="50" />
                                 </li>
                             </ul>
                         </fieldset>
@@ -260,16 +259,22 @@
                                         - Mínimo 8 caracteres y un máximo de 26
                                         - Al menos una minúscula, una mayúscula y un número.
                                         EXPLICACIÓN:
-                        (?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}
-
-                     - (?=.*[a-z]) = "mirar hacia delante": en algún punto hay una minúscula.
-                     - (?=.*[A-Z]) = ... y una mayúscula.
-                     - (?=.*[0-9]) = ... y un número.
-                     - .{8,} = el valor real: cualquier carácter, 8 o más veces.
-                     Los (?= ) no consumen texto, por eso se pueden encadenar reglas.
+                                        - (?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}
+                                            - (?=...)	Lookahead positivo: comprueba una condición sin consumir caracteres
+                                            - .*	Cero o más caracteres.
+                                            Los (?= ) no consumen texto, por eso se pueden encadenar reglas.
+                                            - (?=.*[a-z])	Debe contener al menos una minúscula.
+                                            - (?=.*[A-Z])	Debe contener al menos una mayúscula.
+                                            - (?=.*[0-9])	Debe contener al menos un número.
+                                            - .{8,} = cualquier carácter (.) entre 8 veces hasta el infinito
+                                        Para agregar la obligación de un caracter especial añadir:
+                                        - (?=.*[!@#$%^&*()_+\-={}[\]:;,.?])	Al menos un carácter especial
                                     -->
-                                    <!-- <input type="password" id="clave" name="clave" title="Mínimo 8 caracteres con al menos una minúscula, una mayúscula y un número" /> -->
-                                    <input type="password" name="pass" id="pass" minlength="8" maxlength="26" pattern="[a-z]+" />
+                                    <!-- 
+                                    <input type="password" id="clave" name="clave" 
+                                        title="Mínimo 8 caracteres con al menos una minúscula, una mayúscula y un número" /> 
+                                    -->
+                                    <input type="password" name="pass" id="pass" minlength="8" maxlength="26" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}" title="La contraseña debe tener entre 8 y 26 caracteres, al menos una minúscula, una mayúscula y un número." value="aAbBcC12@" />
                                 </li>
                                 <li>
                                     <label for="iban">IBAN español</label>
@@ -281,7 +286,7 @@
                                         VÁLIDOS: ES9121000418450200051332 | ES91 2100 0418 4502 0005 1332
                                         INVÁLIDOS: FR9121000418450200051332 | ES91 2100 
                                     -->
-                                    <input type="text" id="iban" name="iban" title="Escriba el código IBAN" pattern="ES[0-9]{2}-[0-9]{4}-[0-9]{4}-[0-9]{2}-[0-9]{10}" />
+                                    <input type="text" id="iban" name="iban" title="Escriba el código IBAN" pattern="ES[0-9]{2}-[0-9]{4}-[0-9]{4}-[0-9]{2}-[0-9]{10}" value="ES91-2100-0418-45-0200051332" />
                                 </li>
                             </ul>
                         </fieldset>
@@ -311,85 +316,97 @@
 
                             <ul>
                                 <li>
-                                    <label for="dni">DNI:</label>
+                                    <label for="dninie">DNI ó NIE <sup>*</sup></label>
 
                                     <!-- 
                                         PISTA:
                                         8 números y una letra mayúscula.
                                         Los números pueden comenzar por cero.
                                         La letra debe corresponder al resto módulo 23.
+                                        PATTERN
+                                        [0-9X-Z]\d{7}[A-Z]
                                     -->
-                                    <input type="text" id="dni" name="dni" placeholder="12345678Z" maxlength="9" title="" />
+                                    <input type="text" id="dninie" name="dninie" placeholder="12345678Z" maxlength="9" pattern="[0-9X-Z]\d{7}[A-Z]" title="Introduzca un DNI o NIE válido. Sólo números y letra en mayúsculas. Sin espacios, ni puntos, ni guiones" required />
                                 </li>
 
                                 <li>
-                                    <label for="nie">NIE:</label>
-
-                                    <!-- 
-                                        PISTA:
-                                        Comienza por X, Y o Z.
-                                        Después tiene 7 números y una letra.
-                                    -->
-                                    <input type="text" id="nie" name="nie" placeholder="X1234567L" maxlength="9" title="" />
-                                </li>
-
-                                <li>
-                                    <label for="nombre">Nombre:</label>
+                                    <label for="nome">Nombre <sup>*</sup></label>
 
                                     <!-- 
                                         PISTA:
                                         Entre 2 y 30 caracteres.
                                         Admitir letras españolas, acentos y espacios.
+                                        PATTERN
+                                        [a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ ]{2,}
                                     -->
-                                    <input type="text" id="nombre" name="nombre" maxlength="30" title="" />
+                                    <input type="text" id="nome" name="nome" maxlength="30" placeholder="Nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ ]{2,}" title="Escriba su nombre tal y como aparece en su DNI o NIE" required />
                                 </li>
 
                                 <li>
-                                    <label for="apellidos">Apellidos:</label>
+                                    <label for="apellido1">1er APELLIDO<sup>*</sup></label>
 
                                     <!-- 
                                         PISTA:
                                         Entre 2 y 60 caracteres.
                                         Admitir letras, acentos, espacios y guiones.
+                                        PATTERN
+                                        [a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ\- ]{2,}"
                                     -->
-                                    <input type="text" id="apellidos" name="apellidos" maxlength="60" />
+                                    <input type="text" id="apellido1" placeholder="Primer Apellido" name="apellido1" minlength="2" maxlength="60" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ\- ]{2,}" title="Escriba su primer apellido tal y como aparece en su DNI o NIE" required />
                                 </li>
 
                                 <li>
-                                    <label for="nacimiento">Fecha de nacimiento:</label>
+                                    <label for="apellido2">2º APELLIDO</label>
+
+                                    <!-- 
+                                        PISTA:
+                                        Entre 2 y 60 caracteres.
+                                        Admitir letras, acentos, espacios y guiones.
+                                        PATTERN
+                                        [a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ\- ]{2,}"
+                                    -->
+                                    <input type="text" id="apellido2" name="apellido2" placeholder="Segundo Apellido" minlength="2" maxlength="60" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑüÜçÇ\- ]{2,}" title="Escriba su segundo apellido tal y como aparece en su DNI o NIE" />
+                                </li>
+
+                                <li>
+                                    <label for="fnacimiento">Fecha de nacimiento <sup>*</sup></label>
 
                                     <!-- 
                                         INPUT HTML5: date.
                                         Debe ser una fecha comprendida entre 18 y 100 años.
                                         min y max son restricciones de fecha, no patrones.
                                     -->
-                                    <input type="date" id="nacimiento" name="nacimiento" min="" max="" />
+                                    <input type="date" id="fnacimiento" name="fnacimiento" min="1926-01-01" max="2008-01-01" title="Marque la fecha de nacimiento que aparece en su DNI o NIE" required />
                                 </li>
 
                                 <li>
-                                    <label for="estadoCivil">Estado civil:</label>
+                                    <label for="estadoCivil">Estado civil <sup>*</sup></label>
 
-                                    <select id="estadoCivil" name="estadoCivil">
-                                        <option value="">Selecciona...</option>
+                                    <select id="estadoCivil" name="estadoCivil" required>
+                                        <option value="">-- Selecciona --</option>
                                         <option value="soltero">Soltero/a</option>
+                                        <option value="pareja">Pareja de hecho</option>
                                         <option value="casado">Casado/a</option>
+                                        <option value="separado">Separado/a</option>
                                         <option value="divorciado">Divorciado/a</option>
                                         <option value="viudo">Viudo/a</option>
                                     </select>
                                 </li>
 
                                 <li>
-                                    <label>Sexo (campo de ejemplo):</label>
-
-                                    <!-- INPUT CLÁSICO: radio -->
-                                    <input type="radio" name="sexo" value="hombre" />
-                                    Hombre
-
-                                    <input type="radio" name="sexo" value="mujer" />
-                                    Mujer
-
-                                    <input type="radio" name="sexo" value="otro" />
-                                    Otro / No especificar
+                                    <label for="estudios">* Estudios mínimos:</label>
+                                    <select id="estudios" name="estudios" required>
+                                        <option value="">Selecciona...</option>
+                                        <option value="0">Sin estudios</option>
+                                        <option value="primaria" selected>Primaria</option>
+                                        <option value="ESO">ESO</option>
+                                        <option value="BAC">BAC</option>
+                                        <option value="medio">FPI / Ciclo Medio</option>
+                                        <option value="superior">FPII / Ciclo Superior</option>
+                                        <option value="grado">E.U. Grado</option>
+                                        <option value="master">E.U. Máster</option>
+                                        <option value="doctorado">E.U. Doctorado</option>
+                                    </select>
                                 </li>
                             </ul>
                         </fieldset>

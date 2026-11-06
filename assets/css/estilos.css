@@ -20,10 +20,10 @@ figure {
     margin: 0;
 }
 
-/* 
--------------------------------------------------------
-        --- Barra de cabecera del sitio  ---
--------------------------------------------------------
+/*
+--------------------------------
+        --- Z-index ---
+--------------------------------
 */
 
 body {
@@ -35,7 +35,17 @@ body {
     & > nav {
         z-index: 2;
     }
+
+    & > footer {
+        z-index: 1;
+    }
 }
+
+/* 
+-------------------------------------------------------
+        --- Barra de cabecera del sitio  ---
+-------------------------------------------------------
+*/
 
 body {
     & > header,
@@ -82,71 +92,59 @@ body {
 -------------------------------------------------------
 */
 
-body main {
-    min-height: 100%;
-    min-height: calc(100vh - 3.5rem);
-    height: auto;
-    margin-top: 3.5rem;
-    width: 100%;
-}
-
-@media screen and (min-width: 49rem) {
-    body main {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-}
-
-/*
-
-
-
-*/
-
-body > nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-body > nav ul li a {
-    /* line-height: 3.5rem; */
-}
-body main {
-    min-height: 100%;
-    min-height: 100vh;
-    height: auto;
-    margin-top: 3.5rem;
-    width: 100%;
-}
-@media screen and (min-width: 49rem) {
-    body main {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+body > main > section {
+    & > article {
+        &:nth-of-type(2),
+        &:nth-of-type(3),
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6) {
+            display: none;
+        }
     }
 }
 
 /* 
--------------------------------------------------
-        --- Fin de Cabecera del sitio  ---
--------------------------------------------------
+-------------------------------------------------------
+        --- Layout --- 
+-------------------------------------------------------
 */
 
-/*
------------------------------------
-        --- Maquetación ---
------------------------------------
-*/
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+
+    & > main {
+        flex: 1 0 auto;
+        width: 100%;
+        /* Footer pegajoso */
+        min-height: calc(100svh - var(--h-menu));
+        margin-top: 3.5rem;
+    }
+
+    & > footer {
+        margin-top: auto;
+    }
+}
 
 body {
     & > header {
-        padding-left: 4vw;
+        padding-left: var(--padding-body-xs);
     }
 
     & nav.principal {
-        /* padding-right: 4vw; */
+        & > ul {
+            /* No ha lugar: menú hamburguesa */
+            /* padding-right: var(--padding-body-xs); */
+        }
     }
 
     & > footer,
@@ -199,7 +197,7 @@ body {
 
 /*
 ----------------------------------------
-        --- Fin de Maquetación ---
+        --- Fin de Layout ---
 ----------------------------------------
 */
 
@@ -311,3 +309,9 @@ header.portada {
         filter: brightness(1) blur(2px) grayscale(0.8);
     }
 }
+
+/*
+------------------------------------
+    --- FlexBox ---
+------------------------------------
+*/

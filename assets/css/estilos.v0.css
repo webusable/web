@@ -1,0 +1,313 @@
+@charset "UTF-8";
+
+/*
+----------------------------------
+    --- Selectores de tipo --- 
+----------------------------------
+*/
+
+/* Enlaces del sitio */
+a {
+    text-decoration: none;
+    color: var(--color-2);
+
+    &:hover {
+        color: var(--color-1);
+    }
+}
+
+figure {
+    margin: 0;
+}
+
+/* 
+-------------------------------------------------------
+        --- Barra de cabecera del sitio  ---
+-------------------------------------------------------
+*/
+
+body {
+    position: relative;
+
+    & > header {
+        z-index: 3;
+    }
+    & > nav {
+        z-index: 2;
+    }
+}
+
+body {
+    & > header,
+    & > nav.principal {
+        position: fixed;
+        top: 0;
+        height: var(--h-menu);
+    }
+}
+
+body {
+    & > header {
+        display: flex;
+        align-items: center;
+
+        & a {
+            & figure.logo {
+                height: var(--h-logo-header);
+                width: calc(var(--logo-h) * var(--logo-ratio));
+                /* aspect-ratio: var(--logo-ratio); */
+                margin: 0;
+
+                background-image: url("../svg/logo.svg");
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: cover;
+                background-color: transparent;
+                background-attachment: scroll;
+                background-origin: border-box;
+
+                filter: none;
+            }
+        }
+    }
+
+    & > nav.principal {
+        width: 100%;
+    }
+}
+
+/* 
+-------------------------------------------------------
+        --- Fin de Barra de cabecera del sitio  ---
+-------------------------------------------------------
+*/
+
+body main {
+    min-height: 100%;
+    min-height: calc(100vh - 3.5rem);
+    height: auto;
+    margin-top: 3.5rem;
+    width: 100%;
+}
+
+@media screen and (min-width: 49rem) {
+    body main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+/*
+
+
+
+*/
+
+body > nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+body > nav ul li a {
+    /* line-height: 3.5rem; */
+}
+body main {
+    min-height: 100%;
+    min-height: 100vh;
+    height: auto;
+    margin-top: 3.5rem;
+    width: 100%;
+}
+@media screen and (min-width: 49rem) {
+    body main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+/* 
+-------------------------------------------------
+        --- Fin de Cabecera del sitio  ---
+-------------------------------------------------
+*/
+
+/*
+-----------------------------------
+        --- Maquetación ---
+-----------------------------------
+*/
+
+body {
+    & > header {
+        padding-left: 4vw;
+    }
+
+    & nav.principal {
+        /* padding-right: 4vw; */
+    }
+
+    & > footer,
+    & main > section > article {
+        padding: 5vh;
+        padding-left: var(--padding-body-xs);
+        padding-right: var(--padding-body-xs);
+    }
+}
+
+@media (min-width: 600px) {
+    body {
+        & > header {
+            padding-left: var(--padding-body-m);
+        }
+
+        & nav.principal {
+            & > ul {
+                padding-right: var(--padding-body-m);
+            }
+        }
+
+        & > footer,
+        & main > section > article {
+            padding-left: var(--padding-body-m);
+            padding-right: var(--padding-body-m);
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        & > header {
+            padding-left: var(--padding-body-l);
+        }
+
+        & nav.principal {
+            & > ul {
+                padding-right: var(--padding-body-l);
+            }
+        }
+
+        & > footer,
+        & main > section > article {
+            padding-left: var(--padding-body-l);
+            padding-right: var(--padding-body-l);
+        }
+    }
+}
+
+/*
+----------------------------------------
+        --- Fin de Maquetación ---
+----------------------------------------
+*/
+
+/*
+------------------------------------
+    --- Selectores de clase ---
+------------------------------------
+*/
+
+/* 
+    --- Marca de agua con el logo del sitio  ---
+*/
+.agua {
+    &::before {
+        /* 
+            --- Position: fixed;
+            --- Fija el elemento al viewport, no importa el elemento contenedor 
+        */
+        position: fixed;
+
+        content: "";
+        width: calc(var(--marca-agua-h) * var(--logo-ratio));
+        height: var(--marca-agua-h);
+        bottom: 2rem;
+        right: 2rem;
+
+        background-image: var(--logo-url);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        opacity: 0.2;
+    }
+}
+
+/* 
+    --- antigua Class: Underline From Center ---
+        de Hover.css
+
+        para todos los enlaces del sitio
+
+        ahora mejorada sustituyendo el :beefore por 
+        un background-image que crece
+*/
+
+a:not(.no-border) {
+    background-image: linear-gradient(var(--color-a--hover), var(--color-a--hover));
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 0 2px;
+    transition: background-size 0.3s ease-out;
+
+    &:focus-visible {
+        color: var(--color-a--hover);
+        background-size: 100% 2px;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            color: var(--color-a--hover);
+            background-size: 100% 2px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+/* Ejemplo de uso de la pseudoclase :not() */
+ul:not(.enlaces-pdf) 
+/* ul */ {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* line-height específico */
+ul.enlaces-pdf {
+    & li {
+        /* margin: 0.5em 0; */
+        line-height: 2;
+    }
+}
+
+/* Provisional */
+
+header.portada {
+    height: 40vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-content: center; */
+
+    & h2 {
+        position: relative;
+        width: 100%;
+        padding: 1em;
+        text-align: center;
+        background-color: #00000080;
+        color: #fff;
+    }
+}
+
+header.portada {
+    &::before {
+        background-image: var(--banner--large);
+        filter: brightness(1) blur(2px) grayscale(0.8);
+    }
+}

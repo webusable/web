@@ -6,8 +6,14 @@
     */
 
     /* Branding colors */
+    --color-1: #aa3c39;
+    --color-2: #557714;
+    --color-3: #226666;
+    --color-4: #003133;
+
     --bg-body: #fefefe;
-    --bg-color--images: #222;
+    --bg-footer: var(--color-4);
+    --bg-color--images: var(--color-4);
 
     --bg-menu-nav: #fff;
     --bg-menu-ul-rwd: #aa3c39;
@@ -21,14 +27,10 @@
     --bg-menu-label: #fff;
     --bg-menu-label--checked: #fff;
 
-    --color-1: #aa3c39;
-    --color-2: #557714;
-    --color-3: #226666;
-    --color-4: #003133;
-
     --color-texto: #666;
     --color-a: #557714;
     --color-a--hover: #aa3c39;
+    --color-a-footer: #fff;
 
     --color-menu-item: #557714;
     --color-submenu-item: #fff;
@@ -117,6 +119,7 @@
     */
 
     --logo-url: url("../svg/logo.svg");
+    --ratio-logo: 242/160;
     --logo-ratio: 242/160;
 
     --banner--origin: url("../img/banner-origin.webp");

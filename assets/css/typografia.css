@@ -51,6 +51,7 @@ h4,
 h5,
 h6 {
     margin: 0 auto;
+    color: var(--color-1);
 }
 
 h2 {
@@ -106,4 +107,22 @@ p,
 li,
 span {
     color: var(--color-texto);
+}
+
+body main.legal {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-top: 3.5rem;
+        margin-bottom: 2rem;
+        font-family: "Montserrat", Verdana, Arial, sans-serif;
+        font-size: var(--font-size-l);
+        font-weight: 700;
+
+        color: var(--color-4);
+        text-shadow: none;
+    }
 }

@@ -21,7 +21,7 @@
     --bg-menu-item: lime;
 
     --bg-menu-item--hover: #ffffff33;
-    --bg-submenu: #55771490;
+    --bg-submenu: #226666;
     --bg-submenu-rwd: #557714;
 
     --bg-menu-label: #fff;
@@ -34,8 +34,9 @@
 
     --color-menu-item: #557714;
     --color-submenu-item: #fff;
+    --color-submenu-item--hover: lightgreen;
     --color-menu-item-rwd: #fff;
-    --color-menu-item--hover: #aa3c39;
+    --color-menu-item--hover: lightgreen;
     --color-menu-item-rwd--hover: yellow;
     --color-menu-label: #aa3c39;
     --color-menu-label--checked: #226666;

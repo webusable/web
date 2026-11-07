@@ -323,30 +323,3 @@ ul.enlaces-pdf {
         line-height: 2;
     }
 }
-
-/* Provisional */
-
-header.portada {
-    height: 40vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* align-content: center; */
-
-    & h2 {
-        position: relative;
-        width: 100%;
-        padding: 1em;
-        text-align: center;
-        background-color: #00000080;
-        color: #fff;
-    }
-}
-
-header.portada {
-    &::before {
-        background-image: var(--banner--large);
-        filter: brightness(1) blur(2px) grayscale(0.8);
-    }
-}

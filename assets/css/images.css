@@ -19,6 +19,61 @@
 }
 
 /*
+---------------------------
+    --- Portadas --- 
+---------------------------
+*/
+
+header.portada {
+    height: 40vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-content: center; */
+
+    & h2 {
+        position: relative;
+        width: 100%;
+        padding: 1em;
+        text-align: center;
+        background-color: #00000080;
+        color: #fff;
+    }
+}
+
+header.portada {
+    &::before {
+        background-image: var(--banner--large);
+        filter: brightness(1) blur(2px) grayscale(0.8);
+    }
+}
+
+@media (min-width: 600px) {
+    header.portada {
+        &::before {
+            background-image: var(--banner--large);
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    header.portada {
+        &::before {
+            background-image: var(--banner--origin);
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    header.portada {
+        &::before {
+            background-image: var(--banner--thumb);
+        }
+    }
+}
+
+/*
 ------------------------------------------
     --- Galería de imágenes FlexBox --- 
 ------------------------------------------
@@ -79,30 +134,6 @@ ul.galeria {
     & .diapositiva-5 {
         &::before {
             background-image: var(--galeria-5--thumb);
-        }
-    }
-}
-
-@media (min-width: 600px) {
-    header.portada {
-        &::before {
-            background-image: var(--banner--large);
-        }
-    }
-}
-
-@media (min-width: 900px) {
-    header.portada {
-        &::before {
-            background-image: var(--banner--origin);
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    header.portada {
-        &::before {
-            background-image: var(--banner--thumb);
         }
     }
 }

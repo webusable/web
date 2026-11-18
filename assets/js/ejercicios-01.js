@@ -63,13 +63,13 @@ function restarDosNumeros() {
 // FUNCIÓN PARA REALIZAR UNA MULTIPLICACIÓN
 function multiplicarDosNumeros() {
     // Pedimos el primer número al usuario
-    let num1 = parseFloat(prompt("Introduce el primer número:"));
+    let n1 = parseFloat(prompt("Introduce el primer número:"));
 
     // Pedimos el segundo número al usuario
-    let num2 = parseFloat(prompt("Introduce el segundo número:"));
+    let n2 = parseFloat(prompt("Introduce el segundo número:"));
 
     // Realizamos la multiplicación
-    let resultado = num1 * num2;
+    let resultado = n1 * n2;
 
     // Mostramos el resultado por la consola
     // console.log("La multiplicación es: " + resultado);
@@ -129,15 +129,6 @@ function dividirDosNumeros2() {
     let resultado = n1 / n2;
 
     alert("La división entre " + n1 + " / " + n2 + " es " + resultado);
-}
-
-function preguntarDivisor() {
-    // Pedimos el primer número al usuario
-    let n1 = parseFloat(prompt("Introduce el dividendo:"));
-
-    if (n1 !== 0) {
-        preguntarDivisor();
-    }
 }
 
 function escribirFraseCastigo() {
@@ -236,6 +227,25 @@ function pedirEdadRequerida() {
     }
 }
 
+function clasificarNotas() {
+    let nota = parseFloat(prompt("Introduce la nota"));
+
+    if (nota >= 0 && nota < 5) {
+        console.log("Supenso");
+    } else if (nota >= 5 && nota < 7) {
+        console.log("Aprobado");
+    } else if (nota >= 7 && nota < 9) {
+        console.log("Notable");
+    } else if (nota >= 9 && nota < 10) {
+        console.log("Sobresaliente");
+    } else if (nota === 10) {
+        console.log("Matrícula de honor!");
+    } else {
+        console.log("La nota debe estar comprendida entre 0 y 10");
+        clasificarNotas();
+    }
+}
+
 /*
     Llamadas a las funciones
 */
@@ -271,4 +281,5 @@ function seleccionarOperacion() {
 // mostrarTablaDeMultiplicarDeUnNumero();
 // mostrarNumerosParesHastaValorDeUsuario();
 // mostrarAprobado();
-pedirEdadRequerida();
+// pedirEdadRequerida();
+clasificarNotas();

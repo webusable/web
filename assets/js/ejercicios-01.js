@@ -246,6 +246,142 @@ function clasificarNotas() {
     }
 }
 
+function clasificarNotasConSwitch() {
+    let nota = parseFloat(prompt("Introduce la nota"));
+    let calificacion = "pepe";
+
+    switch (true) {
+        case nota >= 0 && nota < 5:
+            calificacion = "Suspenso";
+            console.log(calificacion);
+            break;
+        case nota >= 5 && nota < 7:
+            calificacion = "Aprobado";
+            console.log(calificacion);
+            break;
+        case nota >= 7 && nota < 9:
+            calificacion = "Notable";
+            console.log(calificacion);
+            break;
+        case nota >= 9 && nota < 10:
+            calificacion = "Sobresaliente";
+            console.log(calificacion);
+            break;
+        case nota === 10:
+            calificacion = "Matrícula de honor !!";
+            console.log(calificacion);
+            break;
+        default:
+            "La nota debe estar comprendida entre 0 y 10";
+            clasificarNotasConSwitch();
+    }
+}
+
+function elegirCastigo() {
+    let numero = 0;
+    let castigo = "";
+    let error = "";
+
+    let contador = 0;
+    while (numero < 1 || numero > 4) {
+        if (contador > 0) {
+            alert("Por favor, apanpao!! Escribe un castigo del 1 al 4");
+        }
+        numero = parseInt(prompt("Elige el número de tu castigo: \n" + "[1] - Limpiar la pizarra \n" + "[2] - Recoger el patio \n" + "[3] - Ordenar la biblioteca \n" + "[4] - Escribir 100 frase de castigo \n"));
+        contador++;
+    }
+
+    switch (numero) {
+        case 1:
+            castigo = "Limpiar la pizarra";
+            break;
+        case 2:
+            castigo = "Recoger el patio";
+            break;
+        case 3:
+            castigo = "Ordenar la biblioteca";
+            break;
+        case 4:
+            castigo = "Escribir 100 frases de castigo";
+            break;
+        default:
+            error = "No deberías haber llegado aquí !!!!";
+            console.log(error);
+    }
+    console.log(castigo);
+}
+
+function calcularCuadradoYCubo() {
+    let n1 = parseFloat(prompt("Introduce un número"));
+    let cuadrado,
+        cubo = 0;
+    let message = "";
+
+    cuadrado = n1 ** 2;
+    cubo = n1 ** 3;
+
+    message = "El cuadrado de " + n1 + " es " + cuadrado;
+    message += "\n";
+    message += "El cubo de " + n1 + " es " + cubo;
+
+    alert(message);
+}
+
+function calcularPotenciaDeUnNumero() {
+    let base = parseFloat(prompt("Introduce la base del cálculo"));
+    let exponente = parseFloat(prompt("Introduce el exponente"));
+    let resultado = 0;
+    let message = "";
+
+    resultado = base ** exponente;
+
+    message = base + " elevado a potencia de " + exponente + " es " + resultado;
+    alert(message);
+}
+
+function calcularMediaAritmetica3Numeros() {
+    let n1 = parseFloat(prompt("Introduce el número 1"));
+    let n2 = parseFloat(prompt("Introduce el número 2"));
+    let n3 = parseFloat(prompt("Introduce el número 3"));
+    let resultado = 0;
+    let message = "";
+
+    resultado = (n1 + n2 + n3) / 3;
+
+    message = "La media aritmética de " + n1 + ", " + n2 + " y " + n3 + " es: " + resultado;
+
+    alert(message);
+}
+
+function calcularMediaAritmetica() {
+    let divisor = parseInt(prompt("Introduzca el divisor de la media aritmética"));
+    let num,
+        suma,
+        resultado = 0;
+
+    let message = "La media aritmética de ";
+    let contador = 1;
+
+    while (contador <= divisor) {
+        num = parseFloat(prompt("Introduzca el número " + contador + " de la serie para hallar la media aritmética"));
+
+        if (contador < divisor) {
+            message += num + " y ";
+        } else {
+            message += num;
+        }
+
+        suma += parseFloat(num);
+
+        contador++;
+    }
+
+    resultado = parseFloat(suma / parseFloat(divisor));
+    message += " es " + resultado;
+
+    alert(message);
+}
+
 /*
     Llamadas a las funciones
 */
@@ -282,4 +418,9 @@ function seleccionarOperacion() {
 // mostrarNumerosParesHastaValorDeUsuario();
 // mostrarAprobado();
 // pedirEdadRequerida();
-clasificarNotas();
+// clasificarNotasConSwitch();
+// elegirCastigo();
+// calcularCuadradoYCubo();
+// calcularPotenciaDeUnNumero();
+// calcularMediaAritmetica3Numeros();
+calcularMediaAritmetica();

@@ -287,7 +287,15 @@ function elegirCastigo() {
         if (contador > 0) {
             alert("Por favor, apanpao!! Escribe un castigo del 1 al 4");
         }
-        numero = parseInt(prompt("Elige el número de tu castigo: \n" + "[1] - Limpiar la pizarra \n" + "[2] - Recoger el patio \n" + "[3] - Ordenar la biblioteca \n" + "[4] - Escribir 100 frase de castigo \n"));
+        numero = parseInt(
+            prompt(
+                "Elige el número de tu castigo: \n" +
+                    "[1] - Limpiar la pizarra \n" +
+                    "[2] - Recoger el patio \n" +
+                    "[3] - Ordenar la biblioteca \n" +
+                    "[4] - Escribir 100 frase de castigo \n",
+            ),
+        );
         contador++;
     }
 
@@ -355,9 +363,9 @@ function calcularMediaAritmetica3Numeros() {
 
 function calcularMediaAritmetica() {
     let divisor = parseInt(prompt("Introduzca el divisor de la media aritmética"));
-    let num,
-        suma,
-        resultado = 0;
+    let num = 0;
+    let suma = 0;
+    let resultado = 0;
 
     let message = "La media aritmética de ";
     let contador = 1;
@@ -376,10 +384,16 @@ function calcularMediaAritmetica() {
         contador++;
     }
 
-    resultado = parseFloat(suma / parseFloat(divisor));
+    resultado = suma / divisor;
     message += " es " + resultado;
 
     alert(message);
+}
+
+function pepe() {
+    for (let i = 1; i <= 10; i++) {
+        console.log(i);
+    }
 }
 
 /*
@@ -387,7 +401,9 @@ function calcularMediaAritmetica() {
 */
 
 function seleccionarOperacion() {
-    let operacion = parseInt(prompt("Seleccione la operación que desea ejecutar [01: suma | 02: resta | 03: multiplicación | 04: división]"));
+    let operacion = parseInt(
+        prompt("Seleccione la operación que desea ejecutar [01: suma | 02: resta | 03: multiplicación | 04: división]"),
+    );
 
     if (operacion === 1) {
         alert("Has seleccionado sumar");

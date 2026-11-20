@@ -587,7 +587,7 @@ function mostrarMenuCalculadora2() {
     console.log("continuar después del if = " + continuar);
 }
 
-mostrarMenuCalculadora2();
+// mostrarMenuCalculadora2();
 
 function mostrarMenuCalculadora3() {
     let operacion = 99;

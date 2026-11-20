@@ -13,15 +13,9 @@
  *   @returns {string}
  */
 
-function sumarDosNumeros() {
-    let n1 = parseFloat(prompt("Escribe el primer sumando"));
-    alert("Has escrito " + n1 + " para el primer sumando");
-
-    let n2 = parseFloat(prompt("Escribe el segundo sumando"));
-    alert("Has escrito " + n2 + " para el segundo sumando");
-
+function sumarDosNumeros(n1, n2) {
     let suma = n1 + n2;
-    alert("La suma de " + n1 + " + " + n2 + " es " + suma);
+    return suma;
 }
 
 /**
@@ -31,25 +25,9 @@ function sumarDosNumeros() {
  *
  *   @returns {string}
  */
-
-function restarDosNumeros() {
-    // Pedimos el minuendo al usuario
-    let n1 = parseFloat(prompt("Escribe el minuendo"));
-
-    // Mostramos el número introducido
-    alert("Has escrito " + n1 + " para el minuendo");
-
-    // Pedimos el sustraendo al usuario
-    let n2 = parseFloat(prompt("Escribe el sustraendo"));
-
-    // Mostramos el número introducido
-    alert("Has escrito " + n2 + " para el sustraendo");
-
-    // Realizamos la resta
-    let resultado = n1 - n2;
-
-    // Mostramos el resultado de la resta
-    alert("La resta de " + n1 + " - " + n2 + " es " + resultado);
+function restarDosNumeros(a, b) {
+    let resultado = a - b;
+    return resultado;
 }
 
 /**
@@ -61,36 +39,15 @@ function restarDosNumeros() {
  */
 
 // FUNCIÓN PARA REALIZAR UNA MULTIPLICACIÓN
-function multiplicarDosNumeros() {
-    // Pedimos el primer número al usuario
-    let n1 = parseFloat(prompt("Introduce el primer número:"));
-
-    // Pedimos el segundo número al usuario
-    let n2 = parseFloat(prompt("Introduce el segundo número:"));
-
+function multiplicarDosNumeros(x, y) {
     // Realizamos la multiplicación
-    let resultado = n1 * n2;
-
-    // Mostramos el resultado por la consola
-    // console.log("La multiplicación es: " + resultado);
-    alert("El producto de " + n1 + " * " + n2 + " es " + resultado);
+    let resultado = x * y;
+    return resultado;
 }
 
-function dividirDosNumeros() {
-    // Pedimos el primer número al usuario
-    let n1 = parseFloat(prompt("Introduce el dividendo:"));
-
-    // Pedimos el segundo número al usuario
-    let n2 = parseFloat(prompt("Introduce el divisor:"));
-
-    while (n2 === 0) {
-        alert("El divisor no puede ser cero!!");
-        n2 = parseFloat(prompt("Introduce un divisor distinto de cero"));
-    }
-
+function dividirDosNumeros(n1, n2) {
     let resultado = n1 / n2;
-
-    alert("La división entre " + n1 + " / " + n2 + " es " + resultado);
+    return resultado;
 }
 
 function dividirDosNumeros3() {
@@ -382,6 +339,69 @@ function calcularMediaAritmetica() {
     alert(message);
 }
 
+function mostrarParImpar() {
+    let num = parseInt(prompt("Escribe un número entero"));
+    let message = "";
+
+    if (num % 2 === 0) {
+        message = "El número " + num + " es par";
+    } else {
+        message = "El número " + num + " es impar";
+    }
+
+    alert(message);
+}
+
+function adivinarQueNumeroEstoyPensando() {
+    // Pedimos el límite superior para la función random()
+    const LIMITE = parseInt(prompt("Dame un número como límite superior del juego"));
+    console.log("LIMITE = " + LIMITE);
+
+    // Se crea un número aleatorio del 1 a LIMITE
+    const MI_NUMERO = Math.floor(Math.random() * LIMITE) + 1;
+    console.log("NUMERO_A_ADIVINAR = " + MI_NUMERO);
+
+    // Inicializamos la variable del usuario
+    let tuNumero = 0;
+
+    // Inicializamos la variable de mensaje al usuario
+    let message = "";
+
+    // Repetimos mientras no acierte
+    while (MI_NUMERO !== tuNumero) {
+        tuNumero = parseInt(prompt("Adivina qué numero estoy pensado entre el 1 y el " + LIMITE + "?"));
+
+        if (MI_NUMERO > tuNumero) {
+            message = "Mi número es mayor que " + tuNumero;
+        } else if (MI_NUMERO < tuNumero) {
+            message = "Mi número es menor que " + tuNumero;
+        } else {
+            message = "Enhorabuena, has dicho " + tuNumero + " y yo había pensado " + MI_NUMERO;
+        }
+        alert(message);
+    }
+}
+
+function calcularSumaGauss() {
+    let n = parseInt(prompt("¿Cuántos días tendrá este desafío"));
+    let resultado1 = 0;
+    let resultado2 = 0;
+    let message = "";
+
+    resultado1 = (n * (n + 1)) / 2;
+
+    message = "La suma de Gauss mediante fórmula del número " + n + " es " + resultado1 + "\n";
+
+    for (let i = 0; i <= n; i++) {
+        // resultado2 = resultado2 + i;
+        resultado2 += i;
+    }
+
+    message += "La suma de Gauss mediante bucle del número " + n + " es ... " + resultado2;
+
+    alert(message);
+}
+
 /*
     Llamadas a las funciones
 */
@@ -409,6 +429,8 @@ function seleccionarOperacion() {
 
 // console.log("El resultado de la mulplicación es " + multiplicarDosNumeros());
 // sumarDosNumeros();
+let suma = sumarDosNumeros();
+// alert("La suma es " + suma);
 // restarDosNumeros();
 // multiplicarDosNumeros();
 // dividirDosNumeros();
@@ -423,4 +445,198 @@ function seleccionarOperacion() {
 // calcularCuadradoYCubo();
 // calcularPotenciaDeUnNumero();
 // calcularMediaAritmetica3Numeros();
-calcularMediaAritmetica();
+// calcularMediaAritmetica();
+// mostrarParImpar();
+// calcularSumaGauss();
+// adivinarQueNumeroEstoyPensando();
+
+function probarFunciones() {
+    let n1 = parseFloat(prompt("Escribe el primer numero"));
+    let n2 = parseFloat(prompt("Escribe el segundo numero"));
+
+    let suma = sumarDosNumeros(n1, n2);
+    let resta = restarDosNumeros(n1, n2);
+    let producto = multiplicarDosNumeros(n1, n2);
+
+    console.log("La suma de " + n0 + " + " + n2 + " es " + suma);
+    console.log("La resta de " + n0 + " - " + n2 + " es " + resta);
+    console.log("El producto de " + n0 + " * " + n2 + " es " + producto);
+
+    while (n2 === 0) {
+        alert("El divisor no puede ser cero!!");
+        n2 = parseFloat(prompt("Introduce un divisor distinto de cero"));
+    }
+    let division = dividirDosNumeros(n1, n2);
+
+    // alert("La suma de " + n1 + " + " + n2 + " es " + suma);
+
+    console.log("La división de " + n1 + " / " + n2 + " es " + division);
+}
+
+// probarFunciones();
+
+function mostrarMenuCalculadora() {
+    let operacion = 99;
+    let message = "";
+    let n1 = 0;
+    let n2 = 0;
+    let resultado = 0;
+
+    while (operacion < 0 || operacion > 4) {
+        operacion = parseInt(prompt("Elige la operación a realizar: \n" + "[0] - Salir \n" + "[1] - Sumar \n" + "[2] - Restar \n" + "[3] - Multiplicar \n" + "[4] - Dividir \n"));
+
+        if (operacion < 0 || operacion > 4) {
+            alert("Apanpao!");
+        }
+    }
+
+    if (operacion > 0) {
+        n1 = parseFloat(prompt("Introduzca el primer número"));
+        n2 = parseFloat(prompt("Introduzca el segundo número"));
+    }
+
+    switch (operacion) {
+        case 1:
+            resultado = sumarDosNumeros(n1, n2);
+            message = "La suma de " + n1 + " + " + n2 + " es " + resultado;
+            break;
+
+        case 2:
+            resultado = restarDosNumeros(n1, n2);
+            message = "La resta de " + n1 + " - " + n2 + " es " + resultado;
+            break;
+        case 3:
+            resultado = multiplicarDosNumeros(n1, n2);
+            message = "El producto de " + n1 + " x " + n2 + " es " + resultado;
+            break;
+        case 4:
+            while (n2 === 0) {
+                alert("El divisor no puede ser cero");
+                n2 = parseFloat(prompt("Introduzca el segundo número"));
+            }
+
+            resultado = dividirDosNumeros(n1, n2);
+            message = "La división de " + n1 + " / " + n2 + " es " + resultado;
+            break;
+        default:
+            message = "Gracias por jugar con nosotros! Adiós";
+    }
+
+    alert(message);
+}
+
+function mostrarMenuCalculadora2() {
+    let continuar = 0;
+    let operacion = 99;
+    let message = "";
+    let n1 = 0;
+    let n2 = 0;
+    let resultado = 0;
+
+    while (operacion < 0 || operacion > 4) {
+        operacion = parseInt(prompt("Elige la operación a realizar: \n" + "[0] - Salir \n" + "[1] - Sumar \n" + "[2] - Restar \n" + "[3] - Multiplicar \n" + "[4] - Dividir \n"));
+
+        if (operacion < 0 || operacion > 4) {
+            alert("Apanpao!");
+        }
+    }
+
+    if (operacion > 0) {
+        n1 = parseFloat(prompt("Introduzca el primer número"));
+        n2 = parseFloat(prompt("Introduzca el segundo número"));
+    }
+
+    switch (operacion) {
+        case 1:
+            resultado = sumarDosNumeros(n1, n2);
+            message = "La suma de " + n1 + " + " + n2 + " es " + resultado;
+            break;
+
+        case 2:
+            resultado = restarDosNumeros(n1, n2);
+            message = "La resta de " + n1 + " - " + n2 + " es " + resultado;
+            break;
+        case 3:
+            resultado = multiplicarDosNumeros(n1, n2);
+            message = "El producto de " + n1 + " x " + n2 + " es " + resultado;
+            break;
+        case 4:
+            while (n2 === 0) {
+                alert("El divisor no puede ser cero");
+                n2 = parseFloat(prompt("Introduzca el segundo número"));
+            }
+
+            resultado = dividirDosNumeros(n1, n2);
+            message = "La división de " + n1 + " / " + n2 + " es " + resultado;
+            break;
+        default:
+            message = "Gracias por jugar con nosotros! Adiós";
+    }
+
+    alert(message);
+
+    console.log("continuar antes de pedir = " + continuar);
+
+    continuar = parseInt(prompt("Quieres realizar otra operación ? [Pulse 1 para continuar]"));
+    console.log("continuar después de pedir = " + continuar);
+
+    if (continuar === 1) {
+        mostrarMenuCalculadora2();
+        console.log("continuar en el if = " + continuar);
+    }
+    console.log("continuar después del if = " + continuar);
+}
+
+mostrarMenuCalculadora2();
+
+function mostrarMenuCalculadora3() {
+    let operacion = 99;
+    let message = "";
+    let n1 = 0;
+    let n2 = 0;
+    let resultado = 0;
+
+    while (operacion < 0 || operacion > 4) {
+        operacion = parseInt(prompt("Elige la operación a realizar: \n" + "[0] - Salir \n" + "[1] - Sumar \n" + "[2] - Restar \n" + "[3] - Multiplicar \n" + "[4] - Dividir \n"));
+
+        if (operacion < 0 || operacion > 4) {
+            alert("Apanpao!");
+        }
+    }
+
+    if (operacion > 0) {
+        n1 = parseFloat(prompt("Introduzca el primer número"));
+        n2 = parseFloat(prompt("Introduzca el segundo número"));
+    }
+
+    switch (operacion) {
+        case 1:
+            resultado = sumarDosNumeros(n1, n2);
+            message = "La suma de " + n1 + " + " + n2 + " es " + resultado;
+            break;
+
+        case 2:
+            resultado = restarDosNumeros(n1, n2);
+            message = "La resta de " + n1 + " - " + n2 + " es " + resultado;
+            break;
+        case 3:
+            resultado = multiplicarDosNumeros(n1, n2);
+            message = "El producto de " + n1 + " x " + n2 + " es " + resultado;
+            break;
+        case 4:
+            while (n2 === 0) {
+                alert("El divisor no puede ser cero");
+                n2 = parseFloat(prompt("Introduzca el segundo número"));
+            }
+
+            resultado = dividirDosNumeros(n1, n2);
+            message = "La división de " + n1 + " / " + n2 + " es " + resultado;
+            break;
+        default:
+            message = "Gracias por jugar con nosotros! Adiós";
+    }
+
+    alert(message);
+}
+
+// mostrarMenuCalculadora();

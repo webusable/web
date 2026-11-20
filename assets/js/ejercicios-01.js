@@ -312,9 +312,9 @@ function calcularMediaAritmetica3Numeros() {
 
 function calcularMediaAritmetica() {
     let divisor = parseInt(prompt("Introduzca el divisor de la media aritmética"));
-    let num,
-        suma,
-        resultado = 0;
+    let num = 0;
+    let suma = 0;
+    let resultado = 0;
 
     let message = "La media aritmética de ";
     let contador = 1;
@@ -333,7 +333,7 @@ function calcularMediaAritmetica() {
         contador++;
     }
 
-    resultado = parseFloat(suma / parseFloat(divisor));
+    resultado = suma / divisor;
     message += " es " + resultado;
 
     alert(message);

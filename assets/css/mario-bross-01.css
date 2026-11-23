@@ -44,7 +44,7 @@ body.jsMario {
             }
         }
         article#galeria-mario {
-            margin-bottom: 25vh;
+            /* margin-bottom: 25vh; */
             ul {
                 /* display: flex; */
                 /* flex-wrap: wrap; */
@@ -125,6 +125,30 @@ body.jsMario {
                 }
                 li:nth-child(6) figure::before {
                     background-image: var(--galeria-mario-6);
+                }
+            }
+        }
+    }
+}
+
+body.jsMario {
+    & main > section.marioClass {
+        article#paleta-colores {
+            ul.paleta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 0;
+                list-style: none;
+
+                li {
+                    padding: 0.5em 1em;
+                    border: 2px solid #333;
+                    border-radius: 5px;
+                    text-align: center;
+                    color: white;
+                    text-shadow: 1px 1px 2px black;
+                    cursor: pointer;
                 }
             }
         }

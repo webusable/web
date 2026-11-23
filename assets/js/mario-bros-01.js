@@ -52,3 +52,67 @@ figuras.forEach(function (figura, indice) {
 captions.forEach(function (caption, indice) {
     caption.textContent = personajesGaleriaMario[indice];
 });
+
+/*
+    Ejercicio 2a
+    1) Clic en un color de la paleta -> se guarda y se muestra en #info
+    2) Clic en una figura -> se le aplica el color guardado
+*/
+
+// elemento html output#info
+const info = document.querySelector("#info");
+
+// Aquí se guardan todos los lis de la paleta con el texto con el nombre del color
+const itemsPaletaColores = document.querySelectorAll("#paleta-colores li");
+
+// aún no hay ningún color elegido
+let colorSeleccionado = null;
+
+// Pintar cada casilla de la paleta con el color que indica su texto
+itemsPaletaColores.forEach(function (li) {
+    li.style.backgroundColor = li.textContent;
+});
+
+function seleccionarColor() {
+    colorSeleccionado = this.textContent;
+    info.textContent = `Color seleccionado: ${colorSeleccionado}`;
+}
+
+function pintarFigura() {
+    if (colorSeleccionado === null) {
+        info.textContent = "Primero elige un color de la paleta";
+        return;
+    }
+
+    this.style.backgroundColor = colorSeleccionado;
+    info.textContent = `${this.textContent} ahora es ${colorSeleccionado}`;
+}
+
+// Conectar cada función con sus elementos
+/*
+itemsPaletaColores.forEach(function (li, indice) {
+    li.onclick = seleccionarColor;
+});
+*/
+
+itemsPaletaColores.forEach(function (li) {
+    li.onclick = seleccionarColor;
+});
+
+/*
+itemsPaletaColores.forEach(function (li, indice) {
+    li.onclick = function () {
+        colorSeleccionado = li.textContent;
+        info.textContent = `Color ${indice + 1} de ${itemsPaletaColores.length}: ${colorSeleccionado}`;
+    };
+});
+*/
+
+/*
+figuras.forEach(function (figura, indice) {
+    figura.onclick = pintarFigura;
+});
+*/
+figuras.forEach(function (figura) {
+    figura.onclick = pintarFigura;
+});

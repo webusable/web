@@ -5,7 +5,12 @@
 
 // Ponemos a Mario en la PRIMERA figura de la galería.
 // El dibujo no está en JS: está en la clase .foto-mario del CSS.
-figuras[0].classList.add("foto-mario");
+figuras[3].classList.add("foto-mario");
+
+let mario = document.querySelector("#mario > img");
+console.log("---------------------------------");
+console.log(mario);
+console.log("---------------------------------");
 
 // EJERCICIOS
 // a) Pon a Mario en la figura 4 (¿qué índice le corresponde?).

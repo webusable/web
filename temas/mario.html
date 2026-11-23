@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <!-- Juego de caracteres de casi todos los idiomas humanos (incluidos ñ, tildes ...) -->
+        <meta charset="utf-8" />
+        <!-- Escala inicial y renderizado _responsive_ por el ancho del dispositivo -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Compatibilidad con Microsoft Explorer -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- Indéxame NO y sígueme NO -->
+        <meta name="robots" content="noIndex, noFollow" />
+        <!-- Breve descripción del sitio que se verá en los resultados de búsqueda -->
+        <meta
+            name="description"
+            content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1304, Elaboración de Plantillas y formularios" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="../assets/svg/logoCuadrado.svg" />
+        <!-- Utilícese una hoja de estilos Normalize -->
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+
+        <!-- Hojas de estilos de terceros -->
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Hover.css de ianlunn.github.io -->
+
+        <!-- Ruta a nuestras hojas de estilos -->
+        <link rel="stylesheet" href="../assets/css/visibilidad.css" />
+        <link rel="stylesheet" href="../assets/css/vars.css" />
+        <link rel="stylesheet" href="../assets/css/footer.css" />
+        <link rel="stylesheet" href="../assets/css/images.css" />
+
+        <link rel="stylesheet" href="../assets/css/typografia.css" />
+        <link rel="stylesheet" href="../assets/css/estilos.css" />
+        <link rel="stylesheet" href="../assets/css/mario.css" />
+        <link rel="stylesheet" href="../assets/css/menu.css" />
+
+        <!-- <script src="../assets/js/mario.js" defer></script> -->
+        <!-- <script src="../assets/js/mario-v1.js" defer></script> -->
+        <script src="../assets/js/mario-v2.js" defer></script>
+        <!-- Título de la pestaña del navegador -->
+        <title>El DOM con JavaScript con Mario | IFCD0110</title>
+    </head>
+
+    <body class="jsMario">
+        <header>
+            <a href="../index.html" class="no-border" title="Página principal">
+                <figure class="logo"></figure>
+                <h1 class="pechado">Confección y Publicación de Páginas Web (IFCD0110)</h1>
+            </a>
+            <!-- Slogan -->
+            <p class="pechado">Certificado de Profesionalidad IFCD0110 - Confección Y Publicación de Páginas Web</p>
+        </header>
+
+        <nav class="principal" aria-label="Navegación principal">
+            <h2 class="pechado">Menú Principal</h2>
+            <input id="icon-menu" name="icon-menu" type="checkbox" />
+            <label for="icon-menu" class="icon-menu">Menú</label>
+            <ul>
+                <li>
+                    <a href="../index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="#">Temas</a>
+                    <ul>
+                        <li>
+                            <a href="#">Imágenes</a>
+                        </li>
+                        <li>
+                            <a href="#">Transiciones</a>
+                        </li>
+                        <li>
+                            <a href="#">Aprende JS con Mario</a>
+                        </li>
+                        <li>
+                            <a href="../temas/formularios.html">Formularios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Nosotros</a>
+                </li>
+                <li>
+                    <a href="../pages/contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="agua">
+            <section class="marioClass">
+                <header class="img-before portada">
+                    <h2>Aprende JavaScript con el objeto Mario</h2>
+                </header>
+
+                <article class="game">
+                    <h3>Escenario de Mario</h3>
+
+                    <div id="escenario" class="escenario">
+                        <figure class="mario" id="mario">
+                            <img src="../assets/img/super-mario-bross.webp" alt="Mario Bros" draggable="false" />
+                            <figcaption>Mario</figcaption>
+                        </figure>
+                    </div>
+                </article>
+
+                <article id="galeria-mario">
+                    <h3>Galería de Mario</h3>
+                    <output id="info" class="info">¡Listo! Mario está esperando órdenes.</output>
+                    <ul class="galeria">
+                        <li>
+                            <figure class="img-before"><figcaption></figcaption></figure>
+                        </li>
+                        <li>
+                            <figure class="img-before"><figcaption></figcaption></figure>
+                        </li>
+                        <li>
+                            <figure class="img-before"><figcaption></figcaption></figure>
+                        </li>
+                        <li>
+                            <figure class="img-before"><figcaption></figcaption></figure>
+                        </li>
+                        <li>
+                            <figure class="img-before"><figcaption></figcaption></figure>
+                        </li>
+                        <li>
+                            <figure class="img-before"><figcaption></figcaption></figure>
+                        </li>
+                    </ul>
+                </article>
+
+                <article class="controles">
+                    <h3>Movimiento</h3>
+                    <button id="btnAvanzar">️Avanzar</button>
+                    <button id="btnRetroceder">Retroceder</button>
+                    <button id="btnSaltar">Saltar</button>
+                </article>
+
+                <article class="controles">
+                    <h3>Transformaciones</h3>
+                    <button id="btnAumentar">Aumentar</button>
+                    <button id="btnEncoger">Encoger</button>
+                    <button id="btnRotar">Rotar</button>
+                    <button id="btnDuplicar">Duplicar Mario</button>
+                    <button id="btnReset">Reiniciar</button>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <h2>Creando webs para las personas</h2>
+            <section class="contentinfo">
+                <h3 class="pechado">Información de contacto</h3>
+                <address>
+                    <ul>
+                        <li>
+                            <a
+                                href="https://maps.app.goo.gl/WiBomM5mFAYKQ3CL9"
+                                title="A academia e oficinas en Google Maps"
+                                class="footer"
+                                target="_blank">
+                                <span class="icon-location">Rúa Angelo Colocci, 25, 27003 Lugo</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:ifcd0110@gmx.com" title="Envíanos un correo electrónico" class="footer">
+                                <span class="icon-email">ifcd0110@gmx.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+3498222333" title="Chámanos" class="footer">
+                                <span class="icon-headphone">982 222 333</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+34666777888" title="Chamar xa dende este dispositivo" class="footer">
+                                <span class="icon-smartphone">666 777 888</span>
+                            </a>
+                        </li>
+                    </ul>
+                </address>
+
+                <article>
+                    <h3 class="pechado">Mapa web</h3>
+
+                    <a href="../index.html" target="_blank" title="Página Principal" class="no-border pattern">
+                        <figure aria-label="Logo"></figure>
+                    </a>
+                </article>
+            </section>
+
+            <section class="footer__legal">
+                <h2 class="pechado">Menú á documentación legal e dereiros de usuarios</h2>
+
+                <ul>
+                    <li class="validator">
+                        <a
+                            href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fwebusable.github.io%2Fweb%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=es"
+                            target="_blank"
+                            title="Esta páxina web é un documento CSS versión 3 + SVG válido!"
+                            class="no-border">
+                            <figure class="w3c css" aria-label="Selo de Calidade Web: CSS 3 + SVG válido!"></figure>
+                        </a>
+                    </li>
+                    <li class="validator">
+                        <a
+                            href="https://wave.webaim.org/report#/https://webusable.github.io/web"
+                            target="_blank"
+                            title="Esta páxina web ten superado o nivel Triple-A de conformidad segundo as Pautas de Accesibilidade a Contenido Web 2.0 do Organismo W3C WAI WCAG 2.0"
+                            class="no-border">
+                            <figure
+                                aria-label="Selo de Calidade Web: Superado WCAG 2.0 (Nivel AAA)! "
+                                class="w3c wcag"></figure>
+                        </a>
+                    </li>
+                    <li class="validator">
+                        <a
+                            href="https://validator.w3.org/nu/?showsource=yes&showoutline=yes&level=warning&doc=https%3A%2F%2Fwebusable.github.io%2Fweb%2F"
+                            target="_blank"
+                            title="Este sitio web está desenrrolada en estructura e semántica HTML5 e con animacións i estilos CSS3"
+                            class="no-border">
+                            <figure
+                                aria-label="Selo de Calidade Web: Tecnoloxías HTML5, Semántica, CSS3, Responsive, Multimedia e con conexión offline por caché HTML5"
+                                class="w3c xhtml5"></figure>
+                        </a>
+                    </li>
+
+                    <li class="legal">
+                        <a
+                            href="../legal/aviso-legal.html"
+                            title="Aviso Legal e Termos de Uso"
+                            target="_blank"
+                            class="footer">
+                            Aviso Legal
+                        </a>
+                    </li>
+
+                    <li class="legal">
+                        <a
+                            href="../legal/lopd.html"
+                            title="Protección de Datos Persoais e Seguridade da Información"
+                            target="_blank"
+                            class="footer">
+                            Política de privacidade
+                        </a>
+                    </li>
+
+                    <li class="legal">
+                        <a href="../legal/cookies.html" title="Política de Cookies" target="_blank" class="footer">
+                            Política de Cookies
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </footer>
+    </body>
+</html>

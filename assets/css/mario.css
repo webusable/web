@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+/* CSS mínimo de apoyo: integra o sustituye por el de tu proyecto */
+
+/* body { font-family: sans-serif; margin: 20px; } */
+
+/* ---------- Escenario (se usará en versiones posteriores) ---------- */
+
+body.jsMario {
+    & main > section.marioClass {
+        & article#galeria-mario {
+            & ul {
+                /* display: flex; */
+                /* flex-wrap: wrap; */
+                /* justify-content: space-between; */
+                /* gap: 1rem; */
+                & li {
+                    figure {
+                        margin: 0;
+                        border: 2px solid #333;
+                        border-radius: 8px;
+                        display: flex;
+                        /* el figcaption queda abajo */
+                        align-items: flex-end;
+                        overflow: hidden;
+
+                        figcaption {
+                            width: 100%;
+                            text-align: center;
+                            font-size: 0.85rem;
+                            background: rgba(255, 255, 255, 0.75);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Ejercicio 1b */
+
+body.jsMario {
+    & main > section.marioClass {
+        & article#galeria-mario {
+            & ul {
+                & li {
+                    figure {
+                        &.foto-mario {
+                            &:before {
+                                background-image: url("../img/super-mario-bross.webp");
+                                background-size: contain;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.escenario {
+    /* position: relative; */
+    /* height: 180px; */
+    /* border: 2px solid #333; */
+    /* overflow: hidden; */
+    position: relative;
+    overflow: hidden;
+    height: 40dvh;
+    border: 4px solid #333;
+    border-radius: 10px;
+
+    background: linear-gradient(to bottom, #87ceeb 0%, #c9f0ff 70%, #72c472 70%, #319447 100%);
+}
+
+/* SOLO el Mario del escenario */
+.mario {
+    position: absolute;
+    left: 2em;
+    bottom: 0;
+    margin: 0;
+}
+.mario img {
+    width: 100px;
+    display: block;
+}
+
+/* Clase que añadirá JavaScript (v2 en adelante) */
+
+.controles {
+    margin-top: 20px;
+}

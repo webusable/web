@@ -68,8 +68,13 @@ body.jsMario {
 body.jsMario {
     & main > section.marioClass {
         & article#galeria-mario {
+            output {
+                display: block;
+                padding: 2em 0;
+            }
             & ul {
                 & li {
+                    flex: 0 auto;
                     figure {
                         &.foto-mario {
                             &:before {

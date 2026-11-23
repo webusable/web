@@ -2,19 +2,45 @@
 
 /* CSS mínimo de apoyo: integra o sustituye por el de tu proyecto */
 
-/* body { font-family: sans-serif; margin: 20px; } */
-
 /* ---------- Escenario (se usará en versiones posteriores) ---------- */
 
 body.jsMario {
     & main > section.marioClass {
-        & article#galeria-mario {
-            & ul {
+        article.game {
+            .escenario {
+                /* position: relative; */
+                /* height: 180px; */
+                /* border: 2px solid #333; */
+                /* overflow: hidden; */
+                position: relative;
+                overflow: hidden;
+                height: 40dvh;
+                border: 4px solid #333;
+                border-radius: 10px;
+
+                background: linear-gradient(to bottom, #87ceeb 0%, #c9f0ff 70%, #72c472 70%, #319447 100%);
+
+                /* SOLO el Mario del escenario */
+                .mario {
+                    position: absolute;
+                    left: 2em;
+                    bottom: 0;
+                    margin: 0;
+
+                    img {
+                        width: 100px;
+                        display: block;
+                    }
+                }
+            }
+        }
+        article#galeria-mario {
+            ul {
                 /* display: flex; */
                 /* flex-wrap: wrap; */
                 /* justify-content: space-between; */
                 /* gap: 1rem; */
-                & li {
+                li {
                     figure {
                         margin: 0;
                         border: 2px solid #333;
@@ -58,34 +84,140 @@ body.jsMario {
     }
 }
 
-.escenario {
-    /* position: relative; */
-    /* height: 180px; */
-    /* border: 2px solid #333; */
-    /* overflow: hidden; */
-    position: relative;
-    overflow: hidden;
-    height: 40dvh;
-    border: 4px solid #333;
-    border-radius: 10px;
-
-    background: linear-gradient(to bottom, #87ceeb 0%, #c9f0ff 70%, #72c472 70%, #319447 100%);
-}
-
-/* SOLO el Mario del escenario */
-.mario {
-    position: absolute;
-    left: 2em;
-    bottom: 0;
-    margin: 0;
-}
-.mario img {
-    width: 100px;
-    display: block;
-}
-
 /* Clase que añadirá JavaScript (v2 en adelante) */
+
+/* =====================================================
+   BOTONES DE CONTROL
+   Cada grupo (article) define su color con una variable CSS.
+   ===================================================== */
+
+body.jsMario {
+    main > section.marioClass {
+        & > article.controles {
+            /* rojo Mario (cámbialo: ejercicio 1) */
+            --color-base: #e52521;
+            --color-oscuro: #a8120f;
+            padding: 16px 20px 20px;
+            border: 2px solid #ddd;
+            border-radius: 14px;
+            background: #fafafa;
+
+            &.transformaciones {
+                /* azul Luigi/Mario */
+                --color-base: #049cd8;
+                --color-oscuro: #04719c;
+            }
+        }
+    }
+}
+
+/* Lista de botones: sin viñetas y en flexbox */
+.lista-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Estado normal ---------- */
+.btn {
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(var(--color-base), var(--color-oscuro));
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25); /* "grosor" del botón */
+    cursor: pointer;
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s,
+        filter 0.15s;
+}
+
+/* ---------- Estados que provoca el USUARIO ---------- */
+.btn:hover {
+    /* el ratón está encima */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25);
+    filter: brightness(1.1);
+}
+
+.btn:active {
+    /* mientras se mantiene pulsado */
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn:focus-visible {
+    /* al llegar con el teclado (Tab) */
+    outline: 3px solid gold;
+    outline-offset: 3px;
+}
+
+.btn:disabled {
+    /* botón desactivado */
+    filter: grayscale(1);
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Variante: el botón de reiniciar es distinto */
+.btn-reset {
+    --color-base: #555;
+    --color-oscuro: #222;
+    background: linear-gradient(#555, #222);
+}
+
+/* Clase para usar desde JavaScript (ejercicios 5 y 6) */
+.pulsado {
+    animation: pulso 0.4s;
+}
+
+@keyframes pulso {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.controles h3 {
+    margin-top: 0;
+}
 
 .controles {
     margin-top: 20px;
+}
+
+/* ---------- Animación y transiciones de Mario (v4) ---------- */
+.mario {
+    transform-origin: bottom center; /* escala y gira desde los pies */
+    transition:
+        left 0.5s ease,
+        transform 0.3s ease;
+}
+
+/* "translate" se combina con "transform" sin pisarlo */
+
+.saltando {
+    animation: salto 0.6s ease;
+}
+
+@keyframes salto {
+    0%,
+    100% {
+        translate: 0 0;
+    }
+    50% {
+        translate: 0 -80px;
+    }
 }

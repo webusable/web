@@ -3,7 +3,20 @@ function crearListaColores() {
 
     colores = ["rojo", "verde", "azul"];
 
-    console.log("colores: " + colores + "\n" + "colores[0]: " + colores[0] + "\n" + "colores[1]: " + colores[1] + "\n" + "colores[2]: " + colores[2] + "\n");
+    console.log(
+        "colores: " +
+            colores +
+            "\n" +
+            "colores[0]: " +
+            colores[0] +
+            "\n" +
+            "colores[1]: " +
+            colores[1] +
+            "\n" +
+            "colores[2]: " +
+            colores[2] +
+            "\n",
+    );
 
     console.log("colores.length = " + colores.length);
 
@@ -129,4 +142,4 @@ function sumarGastos() {
     console.log("Total Gastos:");
     console.log(total);
 }
-sumarGastos();
+//sumarGastos();

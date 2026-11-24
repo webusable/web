@@ -33,14 +33,6 @@ let captions = document.querySelectorAll("#galeria-mario figcaption");
 
 console.log(captions);
 
-figuras.forEach(function (figura, indice) {
-    figura.style.backgroundColor = bgColorsGaleriaMario[indice];
-});
-
-captions.forEach(function (caption, indice) {
-    caption.textContent = personajesGaleriaMario[indice];
-});
-
 /*
 figuras.forEach(function (figura, indice) {
     figura.style.backgroundColor = bgColorsGaleriaMario[indice];
@@ -81,4 +73,41 @@ itemsPaletaColores.forEach(function (li, indice) {
 
 figuras.forEach(function (figura, indice) {
     figura.onclick = pintarFigura;
+});
+
+// Ejercicio 2b
+
+// Agregar 2item de la lista.galeria
+
+// let ulGaleriaMario = document.querySelector("#galeria-mario ul.galeria");
+
+let itemGaleria = document.createElement("li");
+let figureGaleria = document.createElement("figure");
+let captionGaleria = document.createElement("figcaption");
+
+ulGaleriaMario.appendChild(itemGaleria);
+itemGaleria.appendChild(figureGaleria);
+figureGaleria.appendChild(captionGaleria);
+
+figureGaleria.classList.add("img-before");
+
+personajesGaleriaMario.push("Seta Azul");
+console.log("--------------------------");
+console.log("Array personajesGaleriaMario");
+console.log(personajesGaleriaMario);
+console.log(personajesGaleriaMario.length);
+console.log("--------------------------");
+
+figuras[figuras.length - 1].querySelector("figcaption").textContent = personajesGaleriaMario[figuras.length - 1];
+
+captions = document.querySelectorAll("#galeria-mario figcaption");
+
+captions.forEach(function (caption, indice) {
+    caption.textContent = personajesGaleriaMario[indice];
+});
+
+bgColorsGaleriaMario.push("steelblue");
+
+figuras.forEach(function (figura, indice) {
+    figura.style.backgroundColor = bgColorsGaleriaMario[indice];
 });

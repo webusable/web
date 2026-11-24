@@ -7,6 +7,8 @@
     --galeria-mario-4: url("../img/marioBros/bowser.webp");
     --galeria-mario-5: url("../img/marioBros/wario.webp");
     --galeria-mario-6: url("../img/marioBros/king-boo.webp");
+    --galeria-mario-7: url("../img/marioBros/setaAzul.webp");
+    --galeria-mario-8: url("../img/marioBros/lakitu.webp");
 }
 
 /* CSS mínimo de apoyo: integra o sustituye por el de tu proyecto */
@@ -124,6 +126,12 @@ body.jsMario {
                 }
                 li:nth-child(6) figure::before {
                     background-image: var(--galeria-mario-6);
+                }
+                li:nth-child(7) figure::before {
+                    background-image: var(--galeria-mario-7);
+                }
+                li:nth-child(8) figure::before {
+                    background-image: var(--galeria-mario-8);
                 }
             }
         }

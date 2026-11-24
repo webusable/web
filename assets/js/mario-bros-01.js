@@ -59,36 +59,47 @@ captions.forEach(function (caption, indice) {
     2) Clic en una figura -> se le aplica el color guardado
 */
 
-// elemento html output#info
+// Elemento <output id="info"> donde se muestran los mensajes
 const info = document.querySelector("#info");
 
-// Aquí se guardan todos los lis de la paleta con el texto con el nombre del color
+// Los 12 <li> de la paleta (su texto es el nombre del color)
 const itemsPaletaColores = document.querySelectorAll("#paleta-colores li");
 
-// aún no hay ningún color elegido
+// Aquí se guarda el color elegido. null = todavía no se ha elegido ninguno
 let colorSeleccionado = null;
 
-// Pintar cada casilla de la paleta con el color que indica su texto
+// ---------- 1. Pintar cada casilla de la paleta ----------
+
 itemsPaletaColores.forEach(function (li) {
+    // El texto del li ("crimson", "tomato"...) se usa como color de fondo
     li.style.backgroundColor = li.textContent;
 });
 
+// ---------- 2. Definir qué ocurre al hacer clic (las "recetas") ----------
+
+// Se ejecutará cuando se haga clic en un color de la paleta
 function seleccionarColor() {
+    // this = el <li> sobre el que se ha hecho clic
     colorSeleccionado = this.textContent;
     info.textContent = `Color seleccionado: ${colorSeleccionado}`;
 }
 
+// Se ejecutará cuando se haga clic en una figura de la galería
 function pintarFigura() {
+    // Si todavía no hay color elegido, avisamos y salimos de la función
     if (colorSeleccionado === null) {
         info.textContent = "Primero elige un color de la paleta";
         return;
     }
 
+    // this = la <figure> sobre la que se ha hecho clic
     this.style.backgroundColor = colorSeleccionado;
     info.textContent = `${this.textContent} ahora es ${colorSeleccionado}`;
 }
 
-// Conectar cada función con sus elementos
+// ---------- 3. Conectar cada receta con sus elementos ----------
+// Ojo: sin paréntesis. Le damos la función al elemento, no la ejecutamos.
+
 /*
 itemsPaletaColores.forEach(function (li, indice) {
     li.onclick = seleccionarColor;

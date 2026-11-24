@@ -5,9 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <meta name="robots" content="noIndex, noFollow" />
-        <meta
-            name="description"
-            content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1305, Programación con lenguajes de guión en páginas web" />
+        <meta name="description" content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1305, Programación con lenguajes de guión en páginas web" />
 
         <!-- Utilícese una hoja de estilos Normalize -->
         <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
@@ -17,9 +15,7 @@
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
 
         <!-- Ruta a nuestras hojas de estilos -->
         <link rel="stylesheet" href="../assets/css/visibilidad.css" />
@@ -36,7 +32,7 @@
         <link rel="stylesheet" href="../assets/css/mario-bross-01.css" />
 
         <script src="../assets/js/mario-bros-01.js" defer></script>
-        <!-- <script src="../assets/js/mario-class.js" defer></script> -->
+        <script src="../assets/js/mario-class.js" defer></script>
 
         <!-- Título de la pestaña del navegador -->
         <title>JavaScript y el DOM con Mario Bros | UF1305</title>
@@ -149,10 +145,6 @@
             document.querySelector(selector).innerHTML = await response.text();
         }
 
-        await Promise.all([
-            includeHTML("#header", "../layouts/header.html"),
-            includeHTML("#menu", "../layouts/menu.html"),
-            includeHTML("#footer", "../layouts/footer.html"),
-        ]);
+        await Promise.all([includeHTML("#header", "../layouts/header.html"), includeHTML("#menu", "../layouts/menu.html"), includeHTML("#footer", "../layouts/footer.html")]);
     </script>
 </html>

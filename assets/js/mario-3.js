@@ -46,3 +46,39 @@ figuras.forEach(function (figura, indice) {
     figura.style.backgroundColor = bgColorsGaleriaMario[indice];
 });
 */
+
+// Ejercicio 2a
+
+const info = document.querySelector("#info");
+
+let itemsPaletaColores = document.querySelectorAll("#paleta-colores ul.paleta  li");
+
+let colorSeleccionado = null;
+
+// Array de lis de ul.paleta con los nombres de los colres
+itemsPaletaColores.forEach(function (li, indice) {
+    li.style.backgroundColor = li.textContent;
+});
+
+function seleccionarColor() {
+    colorSeleccionado = this.textContent;
+    info.textContent = `Color seccionado: ${colorSeleccionado}`;
+}
+
+function pintarFigura() {
+    if (colorSeleccionado === null) {
+        info.textContent = "Primero debes seleccionar un color!!";
+        return;
+    }
+
+    this.style.backgroundColor = colorSeleccionado;
+    info.textContent = `${this.textContent} ahora es ${colorSeleccionado}`;
+}
+
+itemsPaletaColores.forEach(function (li, indice) {
+    li.onclick = seleccionarColor;
+});
+
+figuras.forEach(function (figura, indice) {
+    figura.onclick = pintarFigura;
+});

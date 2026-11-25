@@ -161,3 +161,89 @@ body.jsMario {
         }
     }
 }
+
+/* =========================================
+   BOTÓN AÑADIR PERSONAJE - ESTILO MARIO
+   ========================================= */
+
+#agregar-personaje {
+    background: linear-gradient(180deg, #ff4545 0%, #e60012 100%);
+
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    padding: 12px 24px;
+
+    border: 3px solid #8b0000;
+    border-radius: 8px;
+
+    box-shadow:
+        0 5px 0 #8b0000,
+        0 7px 8px rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.2s ease;
+}
+
+/* Efecto al pasar el ratón */
+
+/* Botón agregar personaje a la galería de personajes */
+
+.controles-galeria {
+    padding: 2em;
+    text-align: center;
+}
+
+#agregar-personaje {
+    &:hover:not(:disabled) {
+        background: linear-gradient(180deg, #ff6666 0%, #ff1525 100%);
+
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 8px 0 #8b0000,
+            0 10px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Efecto al pulsar */
+
+    &:active:not(:disabled) {
+        transform: translateY(3px);
+
+        box-shadow:
+            0 2px 0 #8b0000,
+            0 3px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estado desactivado: todos los personajes añadidos */
+
+    &:disabled {
+        background: #999;
+        border-color: #666;
+        box-shadow: 0 4px 0 #666;
+
+        color: #eee;
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    /* Accesibilidad: foco mediante teclado */
+
+    &:focus-visible {
+        outline: 4px solid #ffd700;
+        outline-offset: 4px;
+    }
+
+    &.reiniciar {
+        background: tomato;
+    }
+}

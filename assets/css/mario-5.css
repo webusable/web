@@ -107,7 +107,7 @@
    SPRITES / PERSONAJES
 ================================================== */
 
-.mario {
+.personajeMario {
     background-image: var(--galeria-mario-1);
 }
 

@@ -98,6 +98,8 @@ console.log(personajesGaleriaMario);
 console.log(personajesGaleriaMario.length);
 console.log("--------------------------");
 
+captionGaleria.textContent = personajesGaleriaMario[personajesGaleriaMario.length - 1];
+
 figuras[figuras.length - 1].querySelector("figcaption").textContent = personajesGaleriaMario[figuras.length - 1];
 
 captions = document.querySelectorAll("#galeria-mario figcaption");

@@ -54,7 +54,7 @@ class Mario {
 
         this.actualizar();
 
-        this.mensaje(`${this.nombre} avanza.`);
+        this.mostrarMensaje(`${this.nombre} avanza.`);
     }
 
     // ===================================
@@ -68,7 +68,7 @@ class Mario {
 
         this.actualizar();
 
-        this.mensaje(`${this.nombre} retrocede.`);
+        this.mostrarMensaje(`${this.nombre} retrocede.`);
     }
 
     // ===================================
@@ -87,7 +87,7 @@ class Mario {
             this.elemento.classList.remove("saltando");
         }, 700);
 
-        this.mensaje(`${this.nombre} salta!`);
+        this.mostrarMensaje(`${this.nombre} salta!`);
     }
 
     // ===================================
@@ -103,7 +103,7 @@ class Mario {
 
         nuevoMario.actualizar();
 
-        this.mensaje(`${this.nombre} se ha duplicado.`);
+        this.mostrarMensaje(`${this.nombre} se ha duplicado.`);
 
         return nuevoMario;
     }
@@ -117,7 +117,7 @@ class Mario {
 
         this.actualizar();
 
-        this.mensaje(`${this.nombre} aumenta de tamaño.`);
+        this.mostrarMensaje(`${this.nombre} aumenta de tamaño.`);
     }
 
     // ===================================
@@ -129,7 +129,7 @@ class Mario {
 
         this.actualizar();
 
-        this.mensaje(`${this.nombre} se encoge.`);
+        this.mostrarMensaje(`${this.nombre} se encoge.`);
     }
 
     // ===================================
@@ -141,7 +141,7 @@ class Mario {
 
         this.actualizar();
 
-        this.mensaje(`${this.nombre} rota ${grados} grados.`);
+        this.mostrarMensaje(`${this.nombre} rota ${grados} grados.`);
     }
 
     // ===================================
@@ -155,14 +155,14 @@ class Mario {
 
         this.actualizar();
 
-        this.mensaje(`${this.nombre} vuelve a su posición inicial.`);
+        this.mostrarMensaje(`${this.nombre} vuelve a su posición inicial.`);
     }
 
-    // ===================================
-    // MOSTRAR MENSAJES
-    // ===================================
+    // =========================================
+    // MOSTRAR mensajes a la persona usuaria
+    // =========================================
 
-    mensaje(texto) {
+    mostrarMensaje(texto) {
         document.querySelector("#info").textContent = texto;
     }
 }

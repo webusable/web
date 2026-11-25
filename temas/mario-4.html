@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <!-- Juego de caracteres de casi todos los idiomas humanos (incluidos ñ, tildes ...) -->
+        <meta charset="utf-8" />
+        <!-- Escala inicial y renderizado _responsive_ por el ancho del dispositivo -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Compatibilidad con Microsoft Explorer -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- Indéxame NO y sígueme NO -->
+        <meta name="robots" content="noIndex, noFollow" />
+        <!-- Breve descripción del sitio que se verá en los resultados de búsqueda -->
+        <meta
+            name="description"
+            content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1304, Elaboración de Plantillas y formularios" />
+
+        <!-- Utilícese una hoja de estilos Normalize -->
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+
+        <!-- Hojas de estilos de terceros -->
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Hover.css de ianlunn.github.io -->
+
+        <!-- Ruta a nuestras hojas de estilos -->
+        <link rel="stylesheet" href="../assets/css/visibilidad.css" />
+        <link rel="stylesheet" href="../asets/css/vars.css" />
+        <link rel="stylesheet" href="../assets/css/transitions.css" />
+        <link rel="stylesheet" href="../assets/css/images.css" />
+        <link rel="stylesheet" href="../assets/css/carrousel.css" />
+
+        <link rel="stylesheet" href="../assets/css/typografia.css" />
+        <link rel="stylesheet" href="../assets/css/menu.css" />
+        <link rel="stylesheet" href="../assets/css/formularios.css" />
+        <link rel="stylesheet" href="../assets/css/footer.css" />
+        <link rel="stylesheet" href="../assets/css/mario-3.css" />
+        <link rel="stylesheet" href="../assets/css/estilos.css" />
+
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="../assets/js/mario-4.js" defer></script>
+        <!-- <script src="../assets/js/mario-v1.js" defer></script> --
+
+        <!-- Título de la pestaña del navegador -->
+        <title>Plantillas y formularios | Contacto</title>
+    </head>
+    <body class="jsMario">
+        <header id="header"></header>
+        <nav id="menu" class="principal" aria-label="Navegación principal"></nav>
+        <main class="agua">
+            <section class="marioClass">
+                <header class="img-before portada">
+                    <h2>Aprende JavaScript con Mario</h2>
+                </header>
+                <article class="game">
+                    <h3>Escenario de Mario</h3>
+                    <div id="escenario" class="escenario">
+                        <figure class="mario" id="mario">
+                            <img src="../assets/img/super-mario-bross.webp" alt="Mario Bros" draggable="false" />
+                            <figcaption>Mario</figcaption>
+                        </figure>
+                    </div>
+                </article>
+                <article id="galeria-mario">
+                    <h3>Galería de Mario</h3>
+                    <output id="info" class="info">¡Listo! Mario está esperando órdenes.</output>
+
+                    <div class="formulario-personaje">
+                        <label for="nombre-personaje">Nombre del personaje:</label>
+
+                        <input type="text" id="nombre-personaje" placeholder="Ej.: Toad" />
+
+                        <button type="button" id="agregar-personaje">Añadir personaje</button>
+                    </div>
+
+                    <ul class="galeria">
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </article>
+                <article id="paleta-colores">
+                    <h3>Paleta de colores</h3>
+                    <ul class="paleta">
+                        <li>crimson</li>
+                        <li>tomato</li>
+                        <li>darkorange</li>
+                        <li>gold</li>
+                        <li>yellowgreen</li>
+                        <li>seagreen</li>
+                        <li>teal</li>
+                        <li>deepskyblue</li>
+                        <li>royalblue</li>
+                        <li>mediumpurple</li>
+                        <li>orchid</li>
+                        <li>hotpink</li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+
+        <footer id="footer"></footer>
+    </body>
+
+    <script>
+        $(function () {
+            $("#header").load("../layouts/header.html");
+            $("#menu").load("../layouts/menu.html");
+            $("#footer").load("../layouts/footer.html");
+        });
+    </script>
+</html>

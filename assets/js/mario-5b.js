@@ -1,20 +1,4 @@
 "use strict";
-/*
-function seleccionarMario() {
-    marioGaleria.classList.add("seleccionado");
-
-    outputSalida.textContent = "Mario ha sido seleccionado!";
-}
-botonControlMario.addEventListener("click", seleccionarMario);
-
-function seleccionarLuigi() {
-    luigiGaleria.classList.add("estrella");
-
-    outputSalida.textContent = "Luigi ha sido seleccionado!";
-}
-botonControlLuigi.addEventListener("click", seleccionarLuigi);
-
-*/
 
 /*
     --- ELEMENTOS HTML ---
@@ -63,9 +47,19 @@ function seleccionarPersonaje(
     output = outputSalida
 ) {
     const nombre = personaje.textContent;
-    personaje.classList.add(clase);
+    let message = "";
+    // personaje.classList.add(clase);
+    personaje.classList.toggle(clase);
 
-    output.textContent = `${nombre} ${slogan}`;
+
+    if (personaje.classList.contains(clase) ) {
+        message = `${nombre} ${slogan}`;
+    }
+    else {
+        message = `${nombre} ya no ${slogan}`;
+    }
+
+    output.textContent = message; 
 }
 
 /*

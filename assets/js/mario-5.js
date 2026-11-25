@@ -48,6 +48,22 @@ document.querySelector("#btn-girar-yoshi")?.addEventListener("click", () => {
 });
 
 /*
+
+document.querySelector("#btn-seleccionar-mario")?.addEventListener("click", () => {
+    const mario = document.querySelector("#mario-galeria");
+
+    mario.classList.toggle("seleccionado");
+
+    if (mario.classList.contains("seleccionado")) {
+        salida.textContent = "Mario ha sido seleccionado.";
+    } else {
+        salida.textContent = "Mario ya no está seleccionado.";
+    }
+});
+
+*/
+
+/*
 ==================================================
 EJERCICIO 4
 classList.add()

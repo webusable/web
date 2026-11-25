@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <!-- Juego de caracteres de casi todos los idiomas humanos (incluidos ñ, tildes ...) -->
+        <meta charset="utf-8" />
+        <!-- Escala inicial y renderizado _responsive_ por el ancho del dispositivo -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Compatibilidad con Microsoft Explorer -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- Indéxame NO y sígueme NO -->
+        <meta name="robots" content="noIndex, noFollow" />
+        <!-- Breve descripción del sitio que se verá en los resultados de búsqueda -->
+        <meta
+            name="description"
+            content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1304, Elaboración de Plantillas y formularios" />
+
+        <!-- Utilícese una hoja de estilos Normalize -->
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+
+        <!-- Hojas de estilos de terceros -->
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Hover.css de ianlunn.github.io -->
+
+        <!-- Ruta a nuestras hojas de estilos -->
+        <link rel="stylesheet" href="../assets/css/visibilidad.css" />
+        <link rel="stylesheet" href="../assets/css/vars.css" />
+        <link rel="stylesheet" href="../assets/css/transitions.css" />
+        <link rel="stylesheet" href="../assets/css/images.css" />
+        <link rel="stylesheet" href="../assets/css/carrousel.css" />
+
+        <link rel="stylesheet" href="../assets/css/typografia.css" />
+        <link rel="stylesheet" href="../assets/css/menu.css" />
+        <link rel="stylesheet" href="../assets/css/formularios.css" />
+        <link rel="stylesheet" href="../assets/css/footer.css" />
+        <link rel="stylesheet" href="../assets/css/mario-3.css" />
+        <link rel="stylesheet" href="../assets/css/mario-5.css" />
+        <link rel="stylesheet" href="../assets/css/estilos.css" />
+
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="../assets/js/mario-4.js" defer></script>
+        <!-- <script src="../assets/js/mario-v1.js" defer></script> --
+
+        <!-- Título de la pestaña del navegador -->
+        <title>Plantillas y formularios | Contacto</title>
+    </head>
+    <body class="jsMario">
+        <header id="header"></header>
+        <nav id="menu" class="principal" aria-label="Navegación principal"></nav>
+        <main class="agua">
+            <section class="marioClass">
+                <header class="img-before portada">
+                    <h2>Aprende JavaScript con Mario</h2>
+                </header>
+                <article class="game">
+                    <h3>Escenario de Mario</h3>
+                    <div id="escenario" class="escenario">
+                        <figure class="mario" id="mario">
+                            <img src="../assets/img/super-mario-bross.webp" alt="Mario Bros" draggable="false" />
+                            <figcaption>Mario</figcaption>
+                        </figure>
+                    </div>
+                </article>
+                <article id="galeria-mario">
+                    <h3>Galería de Mario</h3>
+                    <output id="info" class="info">¡Listo! Mario está esperando órdenes.</output>
+
+                    <div class="controles-galeria">
+                        <button type="button" id="agregar-personaje">Añadir personaje</button>
+                    </div>
+
+                    <ul class="galeria personajes">
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure class="img-before">
+                                <figcaption></figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </article>
+                <article id="paleta-colores">
+                    <h3>Paleta de colores</h3>
+                    <ul class="paleta">
+                        <li>crimson</li>
+                        <li>tomato</li>
+                        <li>darkorange</li>
+                        <li>gold</li>
+                        <li>yellowgreen</li>
+                        <li>seagreen</li>
+                        <li>teal</li>
+                        <li>deepskyblue</li>
+                        <li>royalblue</li>
+                        <li>mediumpurple</li>
+                        <li>orchid</li>
+                        <li>hotpink</li>
+                    </ul>
+                </article>
+                <article id="personajes-css">
+                    <header>
+                        <h3>Personaliza los personajes con JavaScript</h3>
+
+                        <p>
+                            Utiliza JavaScript para añadir, eliminar, comprobar o intercambiar clases CSS y observar
+                            cómo cambia la apariencia de los personajes.
+                        </p>
+                    </header>
+
+                    <section class="galeria-personajes">
+                        <h4>Galería de personajes</h4>
+
+                        <ul class="lista-personajes">
+                            <li>
+                                <figure id="mario-galeria" class="personaje mario">
+                                    <figcaption>Mario</figcaption>
+                                </figure>
+                            </li>
+
+                            <li>
+                                <figure id="luigi-galeria" class="personaje luigi">
+                                    <figcaption>Luigi</figcaption>
+                                </figure>
+                            </li>
+
+                            <li>
+                                <figure id="yoshi-galeria" class="personaje yoshi">
+                                    <figcaption>Yoshi</figcaption>
+                                </figure>
+                            </li>
+
+                            <li>
+                                <figure id="bowser-galeria" class="personaje bowser">
+                                    <figcaption>Bowser</figcaption>
+                                </figure>
+                            </li>
+
+                            <li>
+                                <figure id="wario-galeria" class="personaje wario">
+                                    <figcaption>Wario</figcaption>
+                                </figure>
+                            </li>
+
+                            <li>
+                                <figure id="kingboo-galeria" class="personaje king-boo">
+                                    <figcaption>King Boo</figcaption>
+                                </figure>
+                            </li>
+
+                            <li>
+                                <figure id="seta-galeria" class="personaje seta-azul">
+                                    <figcaption>Seta Azul</figcaption>
+                                </figure>
+                            </li>
+
+                            <li>
+                                <figure id="lakitu-galeria" class="personaje lakitu">
+                                    <figcaption>Lakitu</figcaption>
+                                </figure>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="controles-js">
+                        <h4>Controles</h4>
+
+                        <ul class="lista-controles">
+                            <li>
+                                <button type="button" id="btn-seleccionar-mario">Seleccionar Mario</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-estrella-luigi">Estrella Luigi</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-girar-yoshi">Girar Yoshi</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-enemigo-bowser">Bowser Enemigo</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-gigante-wario">Wario Gigante</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-transparente-kingboo">King Boo Transparente</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-pixelado-seta">Pixelar Seta Azul</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-espejo-lakitu">Reflejar Lakitu</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-quitar-enemigo">Quitar Enemigo</button>
+                            </li>
+
+                            <li>
+                                <button type="button" id="btn-comprobar-estrella">¿Mario tiene estrella?</button>
+                            </li>
+                        </ul>
+
+                        <output id="resultado-clases" class="info">Esperando instrucciones...</output>
+                    </section>
+
+                    <section class="retos-js">
+                        <h4>Retos JavaScript</h4>
+
+                        <ol>
+                            <li>
+                                Añade la clase
+                                <code>seleccionado</code>
+                                a Mario mediante
+                                <code>classList.add()</code>
+                                .
+                            </li>
+
+                            <li>
+                                Añade la clase
+                                <code>estrella</code>
+                                a Luigi mediante
+                                <code>classList.add()</code>
+                                .
+                            </li>
+
+                            <li>
+                                Añade la clase
+                                <code>girando</code>
+                                a Yoshi.
+                            </li>
+
+                            <li>
+                                Añade la clase
+                                <code>enemigo</code>
+                                a Bowser.
+                            </li>
+
+                            <li>
+                                Añade la clase
+                                <code>gigante</code>
+                                a Wario.
+                            </li>
+
+                            <li>
+                                Añade la clase
+                                <code>transparente</code>
+                                a King Boo.
+                            </li>
+
+                            <li>
+                                Añade la clase
+                                <code>pixelado</code>
+                                a la Seta Azul.
+                            </li>
+
+                            <li>
+                                Añade la clase
+                                <code>espejo</code>
+                                a Lakitu.
+                            </li>
+
+                            <li>
+                                Utiliza
+                                <code>classList.toggle()</code>
+                                para activar y desactivar la clase
+                                <code>girando</code>
+                                .
+                            </li>
+
+                            <li>
+                                Utiliza
+                                <code>classList.remove()</code>
+                                para eliminar la clase
+                                <code>enemigo</code>
+                                .
+                            </li>
+
+                            <li>
+                                Utiliza
+                                <code>classList.contains()</code>
+                                para comprobar si Mario tiene la clase
+                                <code>estrella</code>
+                                .
+                            </li>
+
+                            <li>
+                                Utiliza
+                                <code>classList.replace()</code>
+                                para sustituir
+                                <code>seleccionado</code>
+                                por
+                                <code>enemigo</code>
+                                .
+                            </li>
+                        </ol>
+                    </section>
+                </article>
+            </section>
+        </main>
+
+        <footer id="footer"></footer>
+
+        <script>
+            $(function () {
+                $("#header").load("../layouts/header.html");
+                $("#menu").load("../layouts/menu.html");
+                $("#footer").load("../layouts/footer.html");
+            });
+        </script>
+    </body>
+</html>

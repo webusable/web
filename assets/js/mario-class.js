@@ -184,7 +184,7 @@ class Mario {
 // ===================================
 
 // Array que almacena todos los objetos Mario
-const marios = [];
+let marios = [];
 
 // Personaje que recibirá las órdenes
 let marioActivo = null;
@@ -214,27 +214,72 @@ function crearMario() {
 // 4. EVENTO: CREAR MARIO
 // ===================================
 
-document.querySelector("#btnCrearMario").addEventListener("click", crearMario);
+// document.querySelector("#btnCrearMario").addEventListener("click", crearMario);
+
+document.addEventListener("keydown", (evento) => {
+    if (evento.code === "Enter") {
+        crearMario();
+    }
+});
 
 // ===================================
 // 5. EVENTOS DE MOVIMIENTO
 // ===================================
-
+/*
 document.querySelector("#btnAvanzar").addEventListener("click", () => {
     if (marioActivo) {
         marioActivo.avanzar(800);
     }
 });
+*/
 
+document.addEventListener("keydown", (evento) => {
+    if (evento.key === "ArrowRight") {
+        if (marioActivo) {
+            marioActivo.avanzar(800);
+        }
+    }
+});
+
+/*
 document.querySelector("#btnRetroceder").addEventListener("click", () => {
     if (marioActivo) {
         marioActivo.retroceder(800);
     }
 });
 
+document.addEventListener("keydown", (evento) => {
+    if (evento.key === "ArrowLeft") {
+        if (marioActivo) {
+            marioActivo.retroceder(800);
+        }
+    }
+});
+
+*/
+
+document.addEventListener("keydown", (evento) => {
+    if (evento.key === "ArrowLeft") {
+        if (marioActivo) {
+            marioActivo.retroceder(800);
+        }
+    }
+});
+
+/*
 document.querySelector("#btnSaltar").addEventListener("click", () => {
     if (marioActivo) {
         marioActivo.saltar();
+    }
+});
+*/
+
+document.addEventListener("keydown", (evento) => {
+    if (evento.code === "Space") {
+        if (marioActivo) {
+            evento.preventDefault();
+            marioActivo.saltar();
+        }
     }
 });
 

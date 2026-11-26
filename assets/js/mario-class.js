@@ -287,32 +287,82 @@ document.addEventListener("keydown", (evento) => {
 // 6. EVENTOS DE TRANSFORMACIÓN
 // ===================================
 
+/*
 document.querySelector("#btnAumentar").addEventListener("click", () => {
     if (marioActivo) {
         marioActivo.aumentar();
     }
 });
+*/
 
+document.addEventListener("keydown", (evento) => {
+    if (evento.key === "a") {
+        if (marioActivo) {
+            marioActivo.aumentar();
+        }
+    }
+});
+
+/*
 document.querySelector("#btnEncoger").addEventListener("click", () => {
     if (marioActivo) {
         marioActivo.encoger();
     }
 });
+*/
 
+document.addEventListener("keydown", (evento) => {
+    if (evento.key === "e") {
+        if (marioActivo) {
+            marioActivo.encoger();
+        }
+    }
+});
+
+/*
 document.querySelector("#btnRotar").addEventListener("click", () => {
     if (marioActivo) {
         marioActivo.rotar(90);
     }
 });
+*/
 
+document.addEventListener("keydown", (evento) => {
+    if (evento.key === "r") {
+        if (marioActivo) {
+            marioActivo.rotar(90);
+        }
+    }
+});
+
+/*
 document.querySelector("#btnDuplicar").addEventListener("click", () => {
     if (marioActivo) {
         marioActivo.duplicar();
     }
 });
+*/
 
+document.addEventListener("keydown", (evento) => {
+    if (evento.key === "d") {
+        if (marioActivo) {
+            marioActivo.duplicar();
+        }
+    }
+});
+
+/*
 document.querySelector("#btnReset").addEventListener("click", () => {
     if (marioActivo) {
         marioActivo.reiniciar();
+    }
+});
+*/
+
+document.addEventListener("keydown", (evento) => {
+    if (evento.code === "Backspace") {
+        if (marioActivo) {
+            marioActivo.reiniciar();
+        }
     }
 });

@@ -5,8 +5,9 @@
 // ===================================
 
 class Mario {
-    constructor(nombre = "Mario") {
+    constructor(nombre = "Mario", sprite = "mario.webp") {
         this.nombre = nombre;
+        this.sprite = sprite;
         this.x = 20;
         this.scale = 1;
         this.rotation = 0;
@@ -20,7 +21,7 @@ class Mario {
 
         this.elemento.innerHTML = `
             <img
-                src="../assets/img/super-mario-bross.webp"
+                src="${ruta}${this.sprite}"
                 alt="${this.nombre}"
                 draggable="false"
             >
@@ -180,6 +181,36 @@ class Mario {
 }
 
 // ===================================
+// DETECTAR TIPO DE DISPOSITIVO
+// ===================================
+
+const esTactil = window.matchMedia("(pointer: coarse)").matches;
+
+console.log(esTactil ? "Dispositivo táctil" : "Dispositivo con ratón");
+
+/* 
+    ==============================
+    --- Personajes ---
+    ==============================
+*/
+
+const ruta = "../assets/img/marioBros/";
+
+// prettier-ignore
+const sprites = [
+    "mario.webp",
+    "luigi.webp",
+    "yoshi.webp",
+    "bowser.webp",
+    "king-boo.webp",
+    "lakitu.webp",
+    "setaAzul.webp",
+    "wario.webp"
+];
+
+const nombres = ["Mario", "Luigi", "Yoshi", "Bowser", "King-Boo", "Lakitu", "Seta Azul", "Wario"];
+
+// ===================================
 // 2. VARIABLES DE CONTROL
 // ===================================
 
@@ -196,6 +227,7 @@ let contadorMario = 0;
 // 3. CREAR UN NUEVO MARIO
 // ===================================
 
+/*
 function crearMario() {
     contadorMario++;
 
@@ -208,6 +240,58 @@ function crearMario() {
     nuevoMario.mostrarMensaje(`${nuevoMario.nombre} ha sido creado.`);
 
     return nuevoMario;
+}
+*/
+
+/**
+ * Función crearMario()
+ *
+ * Instancia un new Mario
+ * a partir de los arrays globales nombres, sprites
+ *
+ * @returns {HTMLElement}
+ */
+function crearMario() {
+    // Obtener el índice del siguiente personaje
+    const indice = contadorMario % nombres.length;
+
+    // Obtener nombre e imagen
+    const nombre = nombres[indice];
+    const imagen = sprites[indice];
+
+    // Crear una instancia
+    const nuevoMario = new Mario(nombre, imagen);
+
+    // Registrar el objeto
+    marios.push(nuevoMario);
+
+    // Convertirlo en personaje activo
+    marioActivo = nuevoMario;
+
+    // Incrementar contador
+    contadorMario++;
+
+    // Mostrar mensaje
+    nuevoMario.mostrarMensaje(`${nombre} ha sido creado.`);
+
+    return nuevoMario;
+}
+
+function cambiarMarioActivo() {
+    // Comprobar que existen personajes
+    if (marios.length === 0) return;
+
+    // Buscar el índice del personaje activo
+    let indice = marios.indexOf(marioActivo);
+
+    // Seleccionar el siguiente personaje
+    indice = (indice + 1) % marios.length;
+
+    // Actualizar personaje activo
+    marioActivo = marios[indice];
+
+    // Mostrar mensaje
+    marioActivo.mostrarMensaje(`${marioActivo.nombre} es ahora el personaje activo.`);
 }
 
 // ===================================
@@ -364,5 +448,17 @@ document.addEventListener("keydown", (evento) => {
         if (marioActivo) {
             marioActivo.reiniciar();
         }
+    }
+});
+
+/*
+    Evento de cambio de foco de instancia de Mario 
+*/
+
+document.addEventListener("keydown", (evento) => {
+    if (evento.code === "Tab") {
+        evento.preventDefault();
+
+        cambiarMarioActivo();
     }
 });

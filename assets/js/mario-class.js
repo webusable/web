@@ -8,6 +8,7 @@ class Mario {
     constructor(nombre = "Mario", sprite = "mario.webp") {
         this.nombre = nombre;
         this.sprite = sprite;
+        this.vidas = 3;
         this.x = 20;
         this.scale = 1;
         this.rotation = 0;
@@ -47,6 +48,20 @@ class Mario {
             rotate(${this.rotation}deg)
         `;
     }
+    // ======================
+    // VIDAS
+    // ======================
+
+    get vidas() {
+        return this._vidas;
+    }
+
+    set vidas(valor) {
+        if (typeof valor !== "number") {
+            return;
+        }
+        this._vidas = Math.max(0, valor);
+    }
 
     // ===================================
     // AVANZAR
@@ -55,6 +70,18 @@ class Mario {
     avanzar(velocidad = 500) {
         const maxX = this.escenario.clientWidth - this.elemento.offsetWidth;
 
+        if (this.x >= maxX) {
+            this.perderVida();
+
+            console.log("--- this.avanzar() ");
+            console.log(this.x);
+            console.log(this.vidas);
+            console.log("-------------------");
+
+            return;
+        }
+
+        // Cuando llega al límite, se detiene
         this.x = Math.min(this.x + 100, maxX);
 
         this.elemento.style.transition = `left ${velocidad}ms ease`;
@@ -178,6 +205,20 @@ class Mario {
     mostrarMensaje(texto) {
         document.querySelector("#info").textContent = texto;
     }
+
+    // ===================================
+    // PERDER VIDAS
+    // ===================================
+
+    perderVida() {
+        this.vidas--;
+
+        this.mostrarMensaje(`${this.nombre} pierde una vida. Le quedan ${this.vidas}`);
+
+        if (this.vidas === 0) {
+            `${this.nombre} ha perdido todas sus vidas!`;
+        }
+    }
 }
 
 // ===================================
@@ -223,25 +264,17 @@ let marioActivo = null;
 // Contador de personajes
 let contadorMario = 0;
 
-// ===================================
-// 3. CREAR UN NUEVO MARIO
-// ===================================
+// ==========================================
+//      --- INICIALIZAR CONTROLES ---
+// ==========================================
 
-/*
-function crearMario() {
-    contadorMario++;
-
-    const nuevoMario = new Mario(`Mario ${contadorMario}`);
-
-    marios.push(nuevoMario);
-
-    marioActivo = nuevoMario;
-
-    nuevoMario.mostrarMensaje(`${nuevoMario.nombre} ha sido creado.`);
-
-    return nuevoMario;
+function iniciarControles() {
+    if (esTactil) {
+        iniciarControlesTactiles();
+    } else {
+        iniciarControlesTeclado();
+    }
 }
-*/
 
 /**
  * Función crearMario()

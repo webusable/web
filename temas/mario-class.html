@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="robots" content="noIndex, noFollow" />
+        <meta
+            name="description"
+            content="Sitio web de prueba elaborado en el curso de Confección y Publicación de Páginas Web (IFCD0110). Unidad Formativa UF1305, Programación con lenguajes de guión en páginas web" />
+
+        <!-- Utilícese una hoja de estilos Normalize -->
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+
+        <!-- Hojas de estilos de terceros -->
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Ruta a nuestras hojas de estilos -->
+        <link rel="stylesheet" href="../assets/css/visibilidad.css" />
+        <link rel="stylesheet" href="../assets/css/vars.css" />
+        <link rel="stylesheet" href="../assets/css/transitions.css" />
+        <link rel="stylesheet" href="../assets/css/images.css" />
+        <!-- <link rel="stylesheet" href="../assets/css/carrousel.css" /> -->
+
+        <link rel="stylesheet" href="../assets/css/typografia.css" />
+        <link rel="stylesheet" href="../assets/css/menu.css" />
+        <link rel="stylesheet" href="../assets/css/formularios.css" />
+        <link rel="stylesheet" href="../assets/css/footer.css" />
+        <link rel="stylesheet" href="../assets/css/estilos.css" />
+        <link rel="stylesheet" href="../assets/css/mario-class.css" />
+
+        <!-- <script src="../assets/js/mario-bros-01.js" defer></script> -->
+        <script src="../assets/js/mario-class.js" defer></script>
+
+        <!-- Título de la pestaña del navegador -->
+        <title>JavaScript y POO con Mario Bros | UF1305</title>
+    </head>
+
+    <body class="jsMario">
+        <header id="header"></header>
+        <nav id="menu" class="principal" aria-label="Navegación principal"></nav>
+
+        <main class="agua">
+            <section class="marioClass">
+                <header class="img-before portada">
+                    <h2>Aprende POO con Mario</h2>
+                </header>
+
+                <!-- ESCENARIO -->
+                <article class="game">
+                    <h3>Escenario de Mario</h3>
+
+                    <div id="escenario" class="escenario">
+                        <!-- JavaScript insertará aquí los objetos Mario -->
+                    </div>
+
+                    <!-- INFORMACIÓN -->
+                    <output id="info" class="info" aria-live="polite">¡Pulsa Crear nuevo Mario para comenzar!</output>
+                </article>
+
+                <!-- CREACIÓN DE PERSONAJES -->
+                <article class="controles creacion">
+                    <h3>Crear personajes</h3>
+
+                    <ul class="lista-botones">
+                        <li>
+                            <button class="btn" id="btnCrearMario">Crear nuevo Mario</button>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- MOVIMIENTO -->
+                <article class="controles movimiento">
+                    <h3>Movimiento</h3>
+
+                    <ul class="lista-botones">
+                        <li>
+                            <button class="btn" id="btnAvanzar">Avanzar</button>
+                        </li>
+
+                        <li>
+                            <button class="btn" id="btnRetroceder">Retroceder</button>
+                        </li>
+
+                        <li>
+                            <button class="btn" id="btnSaltar">Saltar</button>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- TRANSFORMACIONES -->
+                <article class="controles transformaciones">
+                    <h3>Transformaciones</h3>
+
+                    <ul class="lista-botones">
+                        <li>
+                            <button class="btn" id="btnAumentar">Aumentar</button>
+                        </li>
+
+                        <li>
+                            <button class="btn" id="btnEncoger">Encoger</button>
+                        </li>
+
+                        <li>
+                            <button class="btn" id="btnRotar">Rotar</button>
+                        </li>
+
+                        <li>
+                            <button class="btn" id="btnDuplicar">Duplicar Mario</button>
+                        </li>
+
+                        <li>
+                            <button class="btn btn-reset" id="btnReset">Reiniciar</button>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+
+        <footer id="footer"></footer>
+
+        <script type="module">
+            async function includeHTML(selector, url) {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`Error cargando ${url}: ${response.status}`);
+                }
+
+                document.querySelector(selector).innerHTML = await response.text();
+            }
+
+            await Promise.all([
+                includeHTML("#header", "../layouts/header.html"),
+                includeHTML("#menu", "../layouts/menu.html"),
+                includeHTML("#footer", "../layouts/footer.html"),
+            ]);
+        </script>
+    </body>
+</html>

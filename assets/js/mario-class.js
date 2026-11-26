@@ -1,5 +1,7 @@
-// ===================================
-// CLASE MARIO
+"use strict";
+
+// ===================================O
+// 1. CLASE MARIO
 // ===================================
 
 class Mario {
@@ -8,41 +10,45 @@ class Mario {
         this.x = 20;
         this.scale = 1;
         this.rotation = 0;
-        this.velocidad = 300;
 
         this.escenario = document.querySelector("#escenario");
 
-        // Crear el elemento HTML de Mario
+        // Crear elemento HTML
         this.elemento = document.createElement("figure");
+
         this.elemento.className = "mario";
 
         this.elemento.innerHTML = `
-      <img src="img/mario.png" alt="${this.nombre}" draggable="false">
-      <figcaption>${this.nombre}</figcaption>
-    `;
+            <img
+                src="../assets/img/super-mario-bross.webp"
+                alt="${this.nombre}"
+                draggable="false"
+            >
+            <figcaption>${this.nombre}</figcaption>
+        `;
 
+        // Insertar Mario en el escenario
         this.escenario.appendChild(this.elemento);
 
-        // Aplicar posición inicial
+        // Actualizar posición
         this.actualizar();
     }
 
     // ===================================
-    // MÉTODO PARA ACTUALIZAR EL PERSONAJE
+    // ACTUALIZAR
     // ===================================
 
     actualizar() {
         this.elemento.style.left = this.x + "px";
 
         this.elemento.style.transform = `
-      scale(${this.scale})
-      rotate(${this.rotation}deg)
-    `;
+            scale(${this.scale})
+            rotate(${this.rotation}deg)
+        `;
     }
 
     // ===================================
     // AVANZAR
-    // velocidad = duración de la transición en ms
     // ===================================
 
     avanzar(velocidad = 500) {
@@ -78,7 +84,7 @@ class Mario {
     saltar() {
         this.elemento.classList.remove("saltando");
 
-        // Reiniciar la animación
+        // Reiniciar animación
         void this.elemento.offsetWidth;
 
         this.elemento.classList.add("saltando");
@@ -87,7 +93,7 @@ class Mario {
             this.elemento.classList.remove("saltando");
         }, 700);
 
-        this.mostrarMensaje(`${this.nombre} salta!`);
+        this.mostrarMensaje(`${this.nombre} salta.`);
     }
 
     // ===================================
@@ -102,6 +108,12 @@ class Mario {
         nuevoMario.rotation = this.rotation;
 
         nuevoMario.actualizar();
+
+        // Registrar el nuevo objeto
+        marios.push(nuevoMario);
+
+        // Convertirlo en personaje activo
+        marioActivo = nuevoMario;
 
         this.mostrarMensaje(`${this.nombre} se ha duplicado.`);
 
@@ -158,9 +170,9 @@ class Mario {
         this.mostrarMensaje(`${this.nombre} vuelve a su posición inicial.`);
     }
 
-    // =========================================
-    // MOSTRAR mensajes a la persona usuaria
-    // =========================================
+    // ===================================
+    // MOSTRAR MENSAJES
+    // ===================================
 
     mostrarMensaje(texto) {
         document.querySelector("#info").textContent = texto;
@@ -168,54 +180,94 @@ class Mario {
 }
 
 // ===================================
-// CREAR EL MARIO PRINCIPAL
+// 2. VARIABLES DE CONTROL
 // ===================================
 
-// Mario principal: reutiliza el figure ya escrito en HTML
-const mario = Object.create(Mario.prototype);
+// Array que almacena todos los objetos Mario
+const marios = [];
 
-mario.nombre = "Mario";
-mario.x = 20;
-mario.scale = 1;
-mario.rotation = 0;
-mario.velocidad = 300;
-mario.escenario = document.querySelector("#escenario");
-mario.elemento = document.querySelector("#mario");
+// Personaje que recibirá las órdenes
+let marioActivo = null;
 
-mario.actualizar();
+// Contador de personajes
+let contadorMario = 0;
 
 // ===================================
-// ASOCIAR EVENTOS A LOS BOTONES
+// 3. CREAR UN NUEVO MARIO
+// ===================================
+
+function crearMario() {
+    contadorMario++;
+
+    const nuevoMario = new Mario(`Mario ${contadorMario}`);
+
+    marios.push(nuevoMario);
+
+    marioActivo = nuevoMario;
+
+    nuevoMario.mostrarMensaje(`${nuevoMario.nombre} ha sido creado.`);
+
+    return nuevoMario;
+}
+
+// ===================================
+// 4. EVENTO: CREAR MARIO
+// ===================================
+
+document.querySelector("#btnCrearMario").addEventListener("click", crearMario);
+
+// ===================================
+// 5. EVENTOS DE MOVIMIENTO
 // ===================================
 
 document.querySelector("#btnAvanzar").addEventListener("click", () => {
-    mario.avanzar(800);
+    if (marioActivo) {
+        marioActivo.avanzar(800);
+    }
 });
 
 document.querySelector("#btnRetroceder").addEventListener("click", () => {
-    mario.retroceder(800);
+    if (marioActivo) {
+        marioActivo.retroceder(800);
+    }
 });
 
 document.querySelector("#btnSaltar").addEventListener("click", () => {
-    mario.saltar();
+    if (marioActivo) {
+        marioActivo.saltar();
+    }
 });
 
+// ===================================
+// 6. EVENTOS DE TRANSFORMACIÓN
+// ===================================
+
 document.querySelector("#btnAumentar").addEventListener("click", () => {
-    mario.aumentar();
+    if (marioActivo) {
+        marioActivo.aumentar();
+    }
 });
 
 document.querySelector("#btnEncoger").addEventListener("click", () => {
-    mario.encoger();
+    if (marioActivo) {
+        marioActivo.encoger();
+    }
 });
 
 document.querySelector("#btnRotar").addEventListener("click", () => {
-    mario.rotar(90);
+    if (marioActivo) {
+        marioActivo.rotar(90);
+    }
 });
 
 document.querySelector("#btnDuplicar").addEventListener("click", () => {
-    mario.duplicar();
+    if (marioActivo) {
+        marioActivo.duplicar();
+    }
 });
 
 document.querySelector("#btnReset").addEventListener("click", () => {
-    mario.reiniciar();
+    if (marioActivo) {
+        marioActivo.reiniciar();
+    }
 });

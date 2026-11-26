@@ -1,0 +1,261 @@
+@charset "UTF-8";
+
+/* =====================================================
+   1. VARIABLES GLOBALES
+   ===================================================== */
+
+:root {
+    --color-rojo-bros-base: #e52521;
+    --color-rojo-bros-oscuro: #a8120f;
+    --color-azul-bros-base: #049cd8;
+    --color-azul-bros-oscuro: #04719c;
+    --color-reset-base: #555;
+    --color-reset-oscuro: #222;
+}
+
+/* =====================================================
+   2. CONTENEDOR PRINCIPAL
+   ===================================================== */
+
+body.jsMario {
+    main {
+        /* Sección principal de Mario */
+        & > section.marioClass {
+            margin-bottom: 25vh;
+
+            /* ---------------------------------------------
+               2.1. PORTADA
+               --------------------------------------------- */
+
+            header.portada {
+                h2 {
+                    /* Estilos del título */
+                }
+            }
+
+            /* ---------------------------------------------
+               2.2. ESCENARIO DE JUEGO
+               --------------------------------------------- */
+
+            article.game {
+                h3 {
+                    /* Título del escenario */
+                }
+
+                .escenario {
+                    position: relative;
+                    overflow: hidden;
+                    height: 40dvh;
+                    border: 4px solid #333;
+                    border-radius: 10px;
+
+                    background: linear-gradient(to bottom, #87ceeb 0%, #c9f0ff 70%, #72c472 70%, #319447 100%);
+
+                    /* Personaje Mario */
+                    .mario {
+                        position: absolute;
+                        left: 2em;
+                        bottom: 0;
+                        margin: 0;
+
+                        transform-origin: bottom center;
+
+                        transition:
+                            left 0.5s ease,
+                            transform 0.3s ease;
+
+                        img {
+                            display: block;
+                            width: 100px;
+                        }
+
+                        figcaption {
+                            /* Nombre del personaje */
+                        }
+                    }
+
+                    /* Animación de salto */
+                    .mario.saltando {
+                        animation: salto 0.6s ease;
+                    }
+                }
+
+                output.info {
+                    display: block;
+                    padding: 1em;
+                }
+            }
+
+            /* ---------------------------------------------
+               2.3. CONTROLES
+               --------------------------------------------- */
+
+            article.controles {
+                margin-top: 20px;
+                padding: 2em;
+                border: 2px solid #ddd;
+                border-radius: 14px;
+                background: #fafafa;
+
+                /* Títulos */
+                h3 {
+                    margin-top: 0;
+                }
+
+                /* Grupo de movimiento */
+                &.creacion,
+                &.movimiento {
+                    .btn {
+                        background: linear-gradient(var(--color-rojo-bros-base), var(--color-rojo-bros-oscuro));
+                    }
+                }
+
+                /* Grupo de transformaciones */
+                &.transformaciones {
+                    margin-top: 5vh;
+
+                    .btn {
+                        background: linear-gradient(var(--color-azul-bros-base), var(--color-azul-bros-oscuro));
+                    }
+                }
+
+                /* -----------------------------------------
+                   2.3.1. LISTA DE BOTONES
+                   ----------------------------------------- */
+
+                .lista-botones {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        /* Elementos de la lista */
+
+                        /* -----------------------------------------
+                   2.3.2. BOTONES
+                   ----------------------------------------- */
+
+                        .btn {
+                            font: inherit;
+                            font-weight: 700;
+                            color: #fff;
+
+                            padding: 10px 18px;
+                            border: none;
+                            border-radius: 999px;
+
+                            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+
+                            cursor: pointer;
+
+                            transition:
+                                transform 0.15s,
+                                box-shadow 0.15s,
+                                filter 0.15s;
+
+                            /* Estados del botón */
+
+                            &:hover {
+                                transform: translateY(-2px);
+                                box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25);
+                                filter: brightness(1.1);
+                            }
+
+                            &:active {
+                                transform: translateY(3px);
+                                box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+                            }
+
+                            &:focus-visible {
+                                outline: 3px solid gold;
+                                outline-offset: 3px;
+                            }
+
+                            &:disabled {
+                                filter: grayscale(1);
+                                opacity: 0.5;
+                                cursor: not-allowed;
+                                transform: none;
+                            }
+
+                            /* Variante: reiniciar */
+
+                            &.btn-reset {
+                                background: linear-gradient(var(--color-reset-base), var(--color-reset-oscuro));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* =====================================================
+   3. ANIMACIONES
+   ===================================================== */
+
+/* Pulso de los botones */
+
+.pulsado {
+    animation: pulso 0.4s;
+}
+
+@keyframes pulso {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Salto de Mario */
+
+@keyframes salto {
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -80px;
+    }
+}
+
+/* =====================================================
+   4. DISEÑO RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 600px) {
+    body.jsMario {
+        main > section.marioClass {
+            article.game {
+                .escenario {
+                    height: 30dvh;
+                }
+            }
+
+            article.controles {
+                padding: 1em;
+
+                .lista-botones {
+                    gap: 8px;
+                }
+
+                .btn {
+                    padding: 10px 14px;
+                }
+            }
+        }
+    }
+}

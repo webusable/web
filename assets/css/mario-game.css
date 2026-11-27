@@ -1,0 +1,366 @@
+@charset "UTF-8";
+
+/* =====================================================
+   1. VARIABLES GLOBALES
+   ===================================================== */
+
+:root {
+    --color-rojo-bros-base: #e52521;
+    --color-rojo-bros-oscuro: #a8120f;
+    --color-azul-bros-base: #049cd8;
+    --color-azul-bros-oscuro: #04719c;
+    --color-reset-base: #555;
+    --color-reset-oscuro: #222;
+
+    /* Escenario */
+    --cielo-alto: #3f9cf0;
+    --cielo-bajo: #bfe4ff;
+    --alto-suelo: 64px; /* altura de la fila de ladrillos (múltiplo de 2) */
+}
+
+/* =====================================================
+   2. CONTENEDOR PRINCIPAL
+   ===================================================== */
+
+body.jsMario {
+    main {
+        /* Sección principal de Mario */
+        & > section.marioClass {
+            margin-bottom: 25vh;
+
+            /* ---------------------------------------------
+               2.1. PORTADA
+               --------------------------------------------- */
+
+            header.portada {
+                h2 {
+                    /* Estilos del título */
+                }
+            }
+
+            /* ---------------------------------------------
+               2.2. ESCENARIO DE JUEGO
+               --------------------------------------------- */
+
+            article.game {
+                h3 {
+                    /* Título del escenario */
+                }
+
+                .escenario {
+                    position: relative;
+                    overflow: hidden;
+
+                    /* Ocupa toda la pantalla, aunque su contenedor sea más estrecho */
+                    width: 100vw;
+                    height: 100vh;
+                    margin-inline: calc(50% - 50vw);
+
+                    /* Cielo azul con tres nubes */
+                    background:
+                        radial-gradient(ellipse 90px 28px at 18% 20%, #fff 70%, transparent 72%),
+                        radial-gradient(ellipse 120px 34px at 62% 12%, #fff 70%, transparent 72%),
+                        radial-gradient(ellipse 80px 24px at 85% 30%, #fff 70%, transparent 72%),
+                        linear-gradient(to bottom, var(--cielo-alto) 0%, var(--cielo-bajo) 100%);
+
+                    /* Suelo de ladrillos al pie */
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        height: var(--alto-suelo);
+
+                        background-color: #c84c0c;
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='32' height='32' fill='%23c84c0c'/%3E%3Cpath d='M0 1H32M0 17H32M1 0V16M17 16V32' stroke='%23400f00' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+                        background-size: calc(var(--alto-suelo) / 2) calc(var(--alto-suelo) / 2);
+                        image-rendering: pixelated;
+                    }
+
+                    /* Panel superior: mensajes y marcador */
+                    .hud {
+                        position: absolute;
+                        inset: 0 0 auto 0;
+                        z-index: 5;
+
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        gap: 1em;
+
+                        padding: 0.75em 1em;
+                        pointer-events: none;
+
+                        output.info {
+                            display: block;
+                            padding: 0.5em 0.9em;
+                            border-radius: 8px;
+                            color: #fff;
+                            background: rgba(0, 0, 0, 0.45);
+                        }
+
+                        .marcador {
+                            margin: 0;
+                            font-size: 1.4rem;
+                            font-weight: 700;
+                            color: #fff;
+                            white-space: nowrap;
+                            text-shadow: 0 2px 0 rgba(0, 0, 0, 0.45);
+                        }
+                    }
+
+                    /* Personaje Mario (de pie sobre los ladrillos) */
+                    .mario {
+                        position: absolute;
+                        left: 2em;
+                        bottom: var(--alto-suelo);
+                        margin: 0;
+
+                        transform-origin: bottom center;
+
+                        transition:
+                            left 0.5s ease,
+                            transform 0.3s ease;
+
+                        img {
+                            display: block;
+                            width: 100px;
+                        }
+
+                        figcaption {
+                            /* Nombre del personaje */
+                        }
+                    }
+
+                    /* Animación de salto */
+                    .mario.saltando {
+                        animation: salto 0.6s ease;
+                    }
+
+                    /* Monedas (la posición se asigna desde JavaScript) */
+                    .moneda {
+                        position: absolute;
+                        width: 32px;
+                        height: 32px;
+
+                        transition:
+                            transform 0.4s ease,
+                            opacity 0.4s ease;
+
+                        /* La cara de la moneda gira sobre sí misma */
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            box-sizing: border-box;
+                            border: 3px solid #a86a00;
+                            border-radius: 50%;
+                            background: radial-gradient(circle at 35% 30%, #fff6a5 0 15%, #ffd32a 45%, #e0a000 100%);
+                            animation: giro-moneda 1.2s linear infinite;
+                        }
+
+                        /* Al cogerla sube y se desvanece */
+                        &.cogida {
+                            transform: translateY(-50px) scale(1.3);
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+
+            /* ---------------------------------------------
+               2.3. CONTROLES
+               --------------------------------------------- */
+
+            article.controles {
+                margin-top: 20px;
+                padding: 2em;
+                border: 2px solid #ddd;
+                border-radius: 14px;
+                background: #fafafa;
+
+                /* Títulos */
+                h3 {
+                    margin-top: 0;
+                }
+
+                /* Grupo de movimiento */
+                &.creacion,
+                &.movimiento {
+                    .btn {
+                        background: linear-gradient(var(--color-rojo-bros-base), var(--color-rojo-bros-oscuro));
+                    }
+                }
+
+                /* Grupo de transformaciones */
+                &.transformaciones {
+                    margin-top: 5vh;
+
+                    .btn {
+                        background: linear-gradient(var(--color-azul-bros-base), var(--color-azul-bros-oscuro));
+                    }
+                }
+
+                /* -----------------------------------------
+                   2.3.1. LISTA DE BOTONES
+                   ----------------------------------------- */
+
+                .lista-botones {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        /* -----------------------------------------
+                           2.3.2. BOTONES
+                           ----------------------------------------- */
+
+                        .btn {
+                            font: inherit;
+                            font-weight: 700;
+                            color: #fff;
+
+                            padding: 10px 18px;
+                            border: none;
+                            border-radius: 999px;
+
+                            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+
+                            cursor: pointer;
+
+                            transition:
+                                transform 0.15s,
+                                box-shadow 0.15s,
+                                filter 0.15s;
+
+                            /* Estados del botón */
+
+                            &:hover {
+                                transform: translateY(-2px);
+                                box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25);
+                                filter: brightness(1.1);
+                            }
+
+                            &:active {
+                                transform: translateY(3px);
+                                box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+                            }
+
+                            &:focus-visible {
+                                outline: 3px solid gold;
+                                outline-offset: 3px;
+                            }
+
+                            &:disabled {
+                                filter: grayscale(1);
+                                opacity: 0.5;
+                                cursor: not-allowed;
+                                transform: none;
+                            }
+
+                            /* Variante: reiniciar */
+
+                            &.btn-reset {
+                                background: linear-gradient(var(--color-reset-base), var(--color-reset-oscuro));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* =====================================================
+   3. ANIMACIONES
+   ===================================================== */
+
+/* Pulso de los botones */
+
+.pulsado {
+    animation: pulso 0.4s;
+}
+
+@keyframes pulso {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Salto de Mario */
+
+@keyframes salto {
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -80px;
+    }
+}
+
+/* Giro de la moneda */
+
+@keyframes giro-moneda {
+    from {
+        transform: perspective(200px) rotateY(0deg);
+    }
+
+    to {
+        transform: perspective(200px) rotateY(360deg);
+    }
+}
+
+/* =====================================================
+   4. DISEÑO RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 600px) {
+    :root {
+        --alto-suelo: 48px;
+    }
+
+    body.jsMario {
+        main > section.marioClass {
+            article.game {
+                .escenario .hud {
+                    flex-direction: column;
+                }
+            }
+
+            article.controles {
+                padding: 1em;
+
+                .lista-botones {
+                    gap: 8px;
+                }
+
+                .btn {
+                    padding: 10px 14px;
+                }
+            }
+        }
+    }
+}
+
+/* Respetar a quien prefiere menos movimiento */
+
+@media (prefers-reduced-motion: reduce) {
+    body.jsMario .escenario .moneda::before {
+        animation: none;
+    }
+}

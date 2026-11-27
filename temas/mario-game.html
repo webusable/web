@@ -56,23 +56,31 @@
                 <article class="game">
                     <h3>Escenario de Mario</h3>
 
-                    <div id="escenario" class="escenario">
+                   <div id="escenario" class="escenario">
                         <!-- PANEL SUPERIOR: mensajes y marcador -->
                         <div class="hud">
                             <!-- INFORMACIÓN -->
-                            <output id="info" class="info" aria-live="polite">
-                                ¡Pulsa Crear nuevo Mario para comenzar!
-                            </output>
-
+                            <output id="info" class="info" aria-live="polite">¡Pulsa Crear nuevo Mario para comenzar!</output>
+ 
                             <!-- MARCADOR DE MONEDAS -->
-                            <p class="marcador">
-                                Monedas:
-                                <span id="contadorMonedas">0</span>
-                            </p>
+                            <p class="marcador">Monedas: <span id="contadorMonedas">0</span></p>
                         </div>
-
-                        <!-- JavaScript insertará aquí los objetos Mario y las monedas -->
+ 
+                        <!-- LETRERO DE GAME OVER (oculto hasta que no quedan personajes con vidas) -->
+                        <div id="gameOver" class="game-over" role="alert" hidden>
+                            <div class="cartel">
+                                <div class="tablero">
+                                    <p class="titulo">GAME OVER</p>
+                                    <p class="texto">Todos los personajes se han quedado sin vidas.</p>
+                                    <button type="button" id="btnJugarOtraVez">Jugar otra vez</button>
+                                    <p class="ayuda">o pulsa Enter</p>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- JavaScript insertará aquí los objetos Mario y las monedas y los Goombas -->
                     </div>
+                </article> 
                 </article>
 
                 <!-- CREACIÓN DE PERSONAJES -->

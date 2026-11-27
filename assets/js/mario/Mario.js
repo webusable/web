@@ -13,7 +13,8 @@ export class Mario {
         this.sprite = sprite;
         this.escenario = escenario;
 
-        this.vidas = 3;
+        this.vidas = CONFIG.VIDAS;
+        this.invulnerable = false; // true justo después de recibir un golpe
         this.monedas = 0;
         this.x = 20;
         this.scale = 1;
@@ -28,13 +29,17 @@ export class Mario {
                 alt="${this.nombre}"
                 draggable="false"
             >
-            <figcaption>${this.nombre}</figcaption>
+            <figcaption>
+                ${this.nombre}
+                <span class="vidas"></span>
+            </figcaption>
         `;
 
         // Insertar Mario en el escenario
         this.escenario.appendChild(this.elemento);
 
-        // Actualizar posición
+        // Dibujar vidas y posición
+        this.pintarVidas();
         this.actualizar();
     }
 
@@ -66,19 +71,19 @@ export class Mario {
         `;
     }
 
+    /**
+     * Dibuja un corazón por cada vida bajo el nombre del personaje.
+     */
+    pintarVidas() {
+        this.elemento.querySelector(".vidas").textContent = "♥".repeat(this.vidas);
+    }
+
     // ===================================
     // MOVIMIENTO
     // ===================================
 
     avanzar(velocidad = 500) {
         const maxX = this.escenario.clientWidth - this.elemento.offsetWidth;
-
-        /*
-        if (this.x >= maxX) {
-            this.perderVida();
-            return;
-        }
-        */
 
         // Cuando llega al límite, se detiene
         this.x = Math.min(this.x + 100, maxX);
@@ -164,6 +169,8 @@ export class Mario {
         clon.x = this.x + 100;
         clon.scale = this.scale;
         clon.rotation = this.rotation;
+        clon.vidas = this.vidas; // el clon hereda las vidas que le quedan
+        clon.pintarVidas();
         clon.actualizar();
 
         this.mostrarMensaje(`${this.nombre} se ha duplicado.`);
@@ -181,12 +188,49 @@ export class Mario {
 
     perderVida() {
         this.vidas--;
+        this.pintarVidas();
 
         if (this.vidas === 0) {
             this.mostrarMensaje(`${this.nombre} ha perdido todas sus vidas!`);
         } else {
             this.mostrarMensaje(`${this.nombre} pierde una vida. Le quedan ${this.vidas}`);
         }
+    }
+
+    /**
+     * Mario recibe el golpe de un enemigo.
+     * Si todavía es invulnerable (acaba de recibir otro), no pasa nada.
+     * Si no, pierde una vida y se vuelve invulnerable un rato (parpadea).
+     *
+     * @returns {boolean} true si el golpe le ha quitado una vida
+     */
+    recibirGolpe() {
+        if (this.invulnerable) return false;
+
+        this.perderVida();
+
+        // Si aún le quedan vidas, protegerlo un tiempo
+        if (this.vidas > 0) {
+            this.invulnerable = true;
+            this.elemento.classList.add("herido");
+
+            setTimeout(() => {
+                this.invulnerable = false;
+                this.elemento.classList.remove("herido");
+            }, CONFIG.INVULNERABILIDAD);
+        }
+
+        return true;
+    }
+
+    /**
+     * Animación de caída (clase CSS `muerto`) y retirada del escenario.
+     * La duración (600 ms) debe coincidir con la de la animación `morir`.
+     */
+    morir() {
+        this.elemento.classList.add("muerto");
+
+        setTimeout(() => this.elemento.remove(), 600);
     }
 
     // ===================================
@@ -218,12 +262,7 @@ export class Mario {
     toca(rectangulo) {
         const m = this.obtenerZonaColision();
 
-        return (
-            m.left < rectangulo.right &&
-            m.right > rectangulo.left &&
-            m.top < rectangulo.bottom &&
-            m.bottom > rectangulo.top
-        );
+        return m.left < rectangulo.right && m.right > rectangulo.left && m.top < rectangulo.bottom && m.bottom > rectangulo.top;
     }
 
     /**

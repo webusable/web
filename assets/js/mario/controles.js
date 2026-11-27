@@ -13,7 +13,9 @@ function crearAcciones(juego) {
     const activo = () => juego.marioActivo;
 
     return {
-        crear: () => juego.crearMario(),
+        // Con el Game Over en pantalla, "crear" (Enter) vuelve a empezar
+        crear: () => (juego.terminado ? juego.reiniciarPartida() : juego.crearMario()),
+        jugarOtraVez: () => juego.reiniciarPartida(),
         cambiar: () => juego.cambiarMarioActivo(),
         avanzar: () => activo()?.avanzar(CONFIG.VELOCIDAD),
         retroceder: () => activo()?.retroceder(CONFIG.VELOCIDAD),
@@ -65,6 +67,9 @@ export function iniciarControles(juego) {
     } else {
         iniciarControlesTeclado(acciones);
     }
+
+    // El botón del cartel de Game Over funciona siempre, con ratón o con el dedo
+    document.querySelector("#btnJugarOtraVez").addEventListener("click", acciones.jugarOtraVez);
 }
 
 function iniciarControlesTactiles(acciones) {
